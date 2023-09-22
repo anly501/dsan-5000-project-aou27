@@ -1,0 +1,60 @@
+project:
+  type: website
+
+website:
+  reader-mode: true
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - section: "Home"
+        contents: 
+          - index.qmd
+      - section: "About Me"
+        contents: 
+          - about.qmd
+      - section: "Code"
+        contents:
+          - href: "https://github.com/anly501/dsan-5000-project-aou27.git"
+            text: "Github"
+      - section: "Data"
+        contents: 
+          - href: "https://github.com/anly501/dsan-5000-project-aou27.git"
+            text: "Github"
+      - section: "Introduction"
+        contents:
+          - introduction.qmd
+      - section: "Data Gathering"
+        contents:
+          - datagathering.qmd
+      - section: "Data Cleaning"
+        contents:
+          - datacleaning.qmd
+      - section: "Data Exploration"
+        contents:
+          - dataexploration.qmd
+      - section: "Clustering"
+        contents:
+          - clustering.qmd
+      - section: "Dimensionality Reduction"
+        contents:
+          - dimensionalityreduction.qmd
+      - section: "Decision Trees"
+        contents:
+          - decisiontrees.qmd
+          - classification.qmd
+          - regression.qmd
+      - section: "Asosciation Rule Mining"
+        contents:
+          - arm.qmd
+      - section: "Conclusions"
+        contents:
+          - conclusions.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+
+
