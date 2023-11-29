@@ -1,3 +1,17 @@
 ---
-title: "Data Gathering"
+title: Data Gathering
 ---
+
+## Data Sources
+My original data sources include datasets from kworb.net and dataworld.com that document rankings as of October 12, 2023.
+![Original Apple Music Dataset](./images/originalAppledata.png)
+![Original Netflix Dataset](./images/originalNetflixdata.png)
+
+
+
+
+## Data Sites
+<iframe src="https://kworb.net/apple_songs/index_full.html" width="800" height="600"></iframe>
+
+<iframe src="https://data.world/gonzandrobles/netflix-movies-and-series/workspace/file?filename=Best+Shows+Netflix.csv" width="800" height="600"></iframe>
+

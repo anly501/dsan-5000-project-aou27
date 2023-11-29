@@ -29,10 +29,13 @@ website:
           - datagathering.qmd
       - section: "Data Cleaning"
         contents:
-          - datacleaning.qmd
+          - datacleaning.ipynb
       - section: "Data Exploration"
         contents:
           - dataexploration.qmd
+      - section: "Naive Bayes"
+        contents: 
+          - naivebayes.ipynb
       - section: "Clustering"
         contents:
           - clustering.qmd
