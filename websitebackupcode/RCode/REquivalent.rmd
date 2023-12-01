@@ -1,0 +1,78 @@
+---
+output:
+  reprex::reprex_document:
+    venue: "gh"
+    advertise: FALSE
+    session_info: TRUE
+    style: TRUE
+    comment: "#;-)"
+    tidyverse_quiet: FALSE
+    std_out_err: TRUE
+knit: reprex::reprex_render
+---
+
+This template demonstrates many of the bells and whistles of the `reprex::reprex_document()` output format. The YAML sets many options to non-default values, such as using `#;-)` as the comment in front of output.
+
+## Code style
+
+Apple Top International
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("dplyr")
+library(tibble)
+
+apple_Dfr <- read_csv("../websitedata/appletopsongsinternational2023.csv")
+apple_Tibble <- as_tibble(apple_Dfr)
+
+apple_Tibble <- apple_Tibble %>%
+  pivot_longer(cols = c(-"Pos", -"P+", -"Artist and Title", -"Days",
+  -"Pk", -"(x?)", -"Pts", -"Pts+", -"TPts"), names_to = "country", values_to = "country_rank")
+
+apple_Tibble <- apple_Tibble %>%
+  select(-"P+", -"(x?)", -"Pts+", -"TPts")
+
+colnames(apple_Tibble) <- c("Chart Position", "Artist and Title", "Position Duration", 
+"Peak", "Points", "Country", "Country Rank") 
+
+#print(sum(is.na(loan_Tibble))) check missing values
+dim(apple_Tibble)
+head(apple_Tibble)
+```
+
+## Quiet tidyverse
+
+Netflix Top 2022
+
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("dplyr")
+library(tibble)
+
+netflix_Dfr <- read_csv("../websitedata/netflixbestshows2022.csv")
+netflix_Tibble <- as_tibble(netflix_Dfr)
+
+colnames(netflix_Tibble) <- c("Title", "Release Year", "Score", "Votes (Amount)", "Duration", 
+                                      "Total Seasons", "Main Genre", "Main Production")
+
+#netflix_Tibble <- arrange(- netflix_Tibble$"Release Year")
+
+#print(sum(is.na(netflix_Tibble))) for missing values
+dim(netflix_Tibble)
+head(netflix_Tibble)
+```
+
+## Chunks in languages other than R
+
+Remember: knitr supports many other languages than R, so you can reprex bits of code in Python, Ruby, Julia, C++, SQL, and more. Note that, in many cases, this still requires that you have the relevant external interpreter installed.
+
+Let's try Python!
+
+```{python, eval = Sys.which("python") != "", python.reticulate = requireNamespace("reticulate", quietly = TRUE)}
+x = 'hello, python world!'
+print(x.split(' '))
+```
+
