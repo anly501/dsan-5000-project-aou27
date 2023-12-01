@@ -1,0 +1,17 @@
+---
+title: Data Gathering
+---
+
+## Data Sources
+My original data sources include datasets from kworb.net and dataworld.com that document rankings as of October 12, 2023.
+![Original Apple Music Dataset](./images/originalAppledata.png)
+![Original Netflix Dataset](./images/originalNetflixdata.png)
+
+
+
+
+## Data Sites
+<iframe src="https://kworb.net/apple_songs/index_full.html" width="800" height="600"></iframe>
+
+<iframe src="https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/" width="800" height="600"></iframe>
+
