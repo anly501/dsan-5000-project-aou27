@@ -1,19 +1,9 @@
 ---
-output:
-  reprex::reprex_document:
-    venue: "gh"
-    advertise: FALSE
-    session_info: TRUE
-    style: TRUE
-    comment: "#;-)"
-    tidyverse_quiet: FALSE
-    std_out_err: TRUE
+title: "R Equivalent Project"
+author: "Ofure Udabor""
+embed-resources: True
 knit: reprex::reprex_render
 ---
-
-This template demonstrates many of the bells and whistles of the `reprex::reprex_document()` output format. The YAML sets many options to non-default values, such as using `#;-)` as the comment in front of output.
-
-## Code style
 
 Apple Top International
 
@@ -21,9 +11,10 @@ Apple Top International
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("dplyr")
-library(tibble)
+library("tibble")
 
-apple_Dfr <- read_csv("../websitedata/appletopsongsinternational2023.csv")
+setwd("C:/Users/Amand/OneDrive/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")
+apple_Dfr <- read_csv("appletopsongsinternational2023.csv")
 apple_Tibble <- as_tibble(apple_Dfr)
 
 apple_Tibble <- apple_Tibble %>%
@@ -31,48 +22,68 @@ apple_Tibble <- apple_Tibble %>%
   -"Pk", -"(x?)", -"Pts", -"Pts+", -"TPts"), names_to = "country", values_to = "country_rank")
 
 apple_Tibble <- apple_Tibble %>%
-  select(-"P+", -"(x?)", -"Pts+", -"TPts")
+  select(-"P+", -"Pts+", -"TPts")
 
 colnames(apple_Tibble) <- c("Chart Position", "Artist and Title", "Position Duration", 
-"Peak", "Points", "Country", "Country Rank") 
+"Peak", "(x?)", "Points", "Country", "Country Rank")
 
-#print(sum(is.na(loan_Tibble))) check missing values
+apple_Tibble$"(x?)" <- gsub("[^0-9]", "", apple_Tibble$"(x?)")
+
+apple_Tibble<- na.omit(apple_Tibble)
+
+
+#print(colSums(is.na(apple_Tibble))) #check missing values
 dim(apple_Tibble)
 head(apple_Tibble)
+write.csv(apple_Tibble, "apple_R.csv")
 ```
 
-## Quiet tidyverse
-
-Netflix Top 2022
-
+Spotify Artists
 
 ```{r}
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("dplyr")
-library(tibble)
+library("tibble")
 
-netflix_Dfr <- read_csv("../websitedata/netflixbestshows2022.csv")
+setwd("C:/Users/Amand/OneDrive/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")
+spotify_Dfr <- read_csv("Spotify.csv")
+spotify_Tibble <- as_tibble(spotify_Dfr)
+
+colnames(spotify_Tibble) <- c("Index", "Artist Name", "Valence", "Danceability", "Energy", "Loudness", "Speechiness", "Acousticness", "Liveness", "Tempo", "Track Name", "Album Name", "Album Release Year")
+
+spotify_Tibble <- spotify_Tibble %>%
+  select(c("Index", "Artist Name", "Valence", "Danceability", "Energy", "Loudness", "Speechiness", "Tempo", "Track Name", "Album Name", "Album Release Year"))
+
+head(spotify_Tibble)
+dim(spotify_Tibble)
+write.csv(spotify_Tibble, "spotify_R.csv")
+
+```
+
+
+
+Netflix Top International
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("dplyr")
+library("tibble")
+
+setwd("C:/Users/Amand/OneDrive/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")
+netflix_Dfr <- read_csv("netflixWorld2022.csv")
 netflix_Tibble <- as_tibble(netflix_Dfr)
 
-colnames(netflix_Tibble) <- c("Title", "Release Year", "Score", "Votes (Amount)", "Duration", 
-                                      "Total Seasons", "Main Genre", "Main Production")
+colnames(netflix_Tibble) <- c("Title", "Points")
 
-#netflix_Tibble <- arrange(- netflix_Tibble$"Release Year")
+netflix_Tibble <- netflix_Tibble[-c(1, 2), ]
 
 #print(sum(is.na(netflix_Tibble))) for missing values
 dim(netflix_Tibble)
 head(netflix_Tibble)
+write.csv(netflix_Tibble, "netflix_R.csv")
+
 ```
 
-## Chunks in languages other than R
-
-Remember: knitr supports many other languages than R, so you can reprex bits of code in Python, Ruby, Julia, C++, SQL, and more. Note that, in many cases, this still requires that you have the relevant external interpreter installed.
-
-Let's try Python!
-
-```{python, eval = Sys.which("python") != "", python.reticulate = requireNamespace("reticulate", quietly = TRUE)}
-x = 'hello, python world!'
-print(x.split(' '))
-```
 
