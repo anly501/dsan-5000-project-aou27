@@ -313,11 +313,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dimensionalityreduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dimensionality Reduction</span></a>
-  </div>
-</li>
+ <span class="menu-text">dimensionalityreduction.qmd</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -330,11 +327,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./decisiontrees.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Decision Trees</span></a>
-  </div>
-</li>
+ <span class="menu-text">decisiontrees.qmd</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./classification.html" class="sidebar-item-text sidebar-link">
@@ -359,11 +353,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./arm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ARM</span></a>
-  </div>
-</li>
+ <span class="menu-text">arm.qmd</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -391,10 +382,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#apple-music-international-rankings" id="toc-apple-music-international-rankings" class="nav-link active" data-scroll-target="#apple-music-international-rankings">Apple Music International Rankings</a></li>
-  <li><a href="#r-equivalent" id="toc-r-equivalent" class="nav-link" data-scroll-target="#r-equivalent">R Equivalent</a></li>
+  <li><a href="#r-equivalent" id="toc-r-equivalent" class="nav-link" data-scroll-target="#r-equivalent">R Equivalent</a>
+  <ul class="collapse">
+  <li><a href="#exploring-data-tab" id="toc-exploring-data-tab" class="nav-link" data-scroll-target="#exploring-data-tab">Exploring Data Tab</a></li>
+  </ul></li>
   <li><a href="#netflix-best-shows-of-2022" id="toc-netflix-best-shows-of-2022" class="nav-link" data-scroll-target="#netflix-best-shows-of-2022">Netflix Best Shows of 2022</a></li>
   <li><a href="#r-equivalent-1" id="toc-r-equivalent-1" class="nav-link" data-scroll-target="#r-equivalent-1">R Equivalent</a></li>
-  <li><a href="#text-api" id="toc-text-api" class="nav-link" data-scroll-target="#text-api">Text API</a></li>
+  <li><a href="#wiki-data-wordcloud-for-visuals-and-df-for-analysis" id="toc-wiki-data-wordcloud-for-visuals-and-df-for-analysis" class="nav-link" data-scroll-target="#wiki-data-wordcloud-for-visuals-and-df-for-analysis">Wiki Data (Wordcloud for Visuals and DF for analysis)</a></li>
   </ul>
 </nav>
     </div>
@@ -420,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="apple-music-international-rankings" class="level2">
 <h2 class="anchored" data-anchor-id="apple-music-international-rankings">Apple Music International Rankings</h2>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
@@ -430,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>appledf <span class="op">=</span> pd.read_csv(<span class="st">"../websitedata/appletopsongsinternational2023.csv"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf.shape)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#print(appledf.shape)</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(appledf))</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>appledf.dropna</span>
@@ -449,12 +443,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#print(appledf["(x?)"].value_counts())</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#appledf.to_csv("C:/Users/Owner/Documents/DSAN 5000/HW-02/websitedata/apple_py.csv")</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>appledf[<span class="st">"(x?)"</span>] <span class="op">=</span> appledf[<span class="st">"(x?)"</span>].<span class="bu">str</span>.replace(<span class="vs">r'[()]|x'</span>, <span class="st">""</span>, regex <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#appledf = appledf[appledf["Country"].str.contains("^US", na=False)]</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>appledf.to_csv(<span class="st">"../websitedata/apple_py.csv"</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(199, 69)
-&lt;class 'pandas.core.frame.DataFrame'&gt;
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
        Chart Position                     Artist and Title  Position Duration  \
 0                   1        Doja Cat - Paint The Town Red                 68   
 1                   2                  Tate McRae - greedy                 27   
@@ -468,20 +465,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 11802              62                 Taylor Swift - Lover                412   
 11810              70                      SZA - Kill Bill                307   
 
-       Peak   (x?)  Points Country  Country Rank  
-0         1  (x45)   16920      US          29.0  
-1         2   (x9)   14619      US          44.0  
-2         3   (x1)   13364      US           1.0  
-3         3   (x2)   12624      US           2.0  
-4         2   (x2)   12359      US           3.0  
-...     ...    ...     ...     ...           ...  
-11747     1  (x13)   10731      VN          28.0  
-11770     2  (x10)    5425      VN         166.0  
-11773     1  (x50)    5108      VN         146.0  
-11802     3  (x13)    2739      VN         116.0  
-11810     1   (x3)    2487      VN         104.0  
+       Peak (x?)  Points Country  Country Rank  
+0         1   45   16920      US          29.0  
+1         2    9   14619      US          44.0  
+2         3    1   13364      US           1.0  
+3         3    2   12624      US           2.0  
+4         2    2   12359      US           3.0  
+...     ...  ...     ...     ...           ...  
+11747     1   13   10731      VN          28.0  
+11770     2   10    5425      VN         166.0  
+11773     1   50    5108      VN         146.0  
+11802     3   13    2739      VN         116.0  
+11810     1    3    2487      VN         104.0  
 
-[836 rows x 8 columns]</code></pre>
+[836 rows x 8 columns]
+(836, 8)</code></pre>
 </div>
 </div>
 </section>
@@ -493,86 +491,171 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">R Equivalent to Apple Data Gathering and Cleaning</figcaption>
 </figure>
 </div>
+<section id="exploring-data-tab" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-data-tab">Exploring Data Tab</h3>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf.describe())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>newAppledf <span class="op">=</span> appledf.drop([<span class="st">"Artist and Title"</span>, <span class="st">"Country"</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>newAppledf <span class="op">=</span> newAppledf.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(newAppledf.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Chart Position  Position Duration        Peak        Points  \
+count      836.000000         836.000000  836.000000    836.000000   
+mean        42.502392         308.492823    1.671053   7506.009569   
+std         49.812835         427.604273    0.724705   5080.042094   
+min          1.000000           6.000000    1.000000   1056.000000   
+25%          5.000000          68.000000    1.000000   2739.000000   
+50%         30.000000         132.000000    2.000000   5425.000000   
+75%         62.000000         393.000000    2.000000  12359.000000   
+max        198.000000        1982.000000    3.000000  16920.000000   
+
+       Country Rank  
+count    836.000000  
+mean      61.480861  
+std       52.836577  
+min        1.000000  
+25%       16.000000  
+50%       48.500000  
+75%       93.000000  
+max      200.000000  
+   Chart Position  Position Duration  Peak (x?)  Points  Country Rank
+0               1                 68     1   45   16920          29.0
+1               2                 27     2    9   14619          44.0
+2               3                  6     3    1   13364           1.0
+3               4                  6     3    2   12624           2.0
+4               5                  6     2    2   12359           3.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>newAppledf[<span class="st">"(x?)"</span>] <span class="op">=</span> newAppledf[<span class="st">"(x?)"</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>newAppledf[<span class="st">"Country Rank"</span>] <span class="op">=</span> newAppledf[<span class="st">"Country Rank"</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(newAppledf.dtypes)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>newAppledf.to_csv(<span class="st">"../websitedata/newApple_py.csv"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(newAppledf.describe())</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(newAppledf.corr())</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Outliers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chart Position       int64
+Position Duration    int64
+Peak                 int64
+(x?)                 int32
+Points               int64
+Country Rank         int32
+dtype: object
+       Chart Position  Position Duration        Peak        (x?)  \
+count      836.000000         836.000000  836.000000  836.000000   
+mean        42.502392         308.492823    1.671053   32.011962   
+std         49.812835         427.604273    0.724705   47.504048   
+min          1.000000           6.000000    1.000000    1.000000   
+25%          5.000000          68.000000    1.000000    3.000000   
+50%         30.000000         132.000000    2.000000   14.000000   
+75%         62.000000         393.000000    2.000000   32.000000   
+max        198.000000        1982.000000    3.000000  177.000000   
+
+             Points  Country Rank  
+count    836.000000    836.000000  
+mean    7506.009569     61.480861  
+std     5080.042094     52.836577  
+min     1056.000000      1.000000  
+25%     2739.000000     16.000000  
+50%     5425.000000     48.500000  
+75%    12359.000000     93.000000  
+max    16920.000000    200.000000  
+                   Chart Position  Position Duration      Peak      (x?)  \
+Chart Position           1.000000           0.537127 -0.006928 -0.043663   
+Position Duration        0.537127           1.000000 -0.234745  0.250226   
+Peak                    -0.006928          -0.234745  1.000000 -0.438067   
+(x?)                    -0.043663           0.250226 -0.438067  1.000000   
+Points                  -0.788348          -0.543229  0.094603 -0.179048   
+Country Rank             0.529540           0.329221 -0.048784  0.019253   
+
+                     Points  Country Rank  
+Chart Position    -0.788348      0.529540  
+Position Duration -0.543229      0.329221  
+Peak               0.094603     -0.048784  
+(x?)              -0.179048      0.019253  
+Points             1.000000     -0.518561  
+Country Rank      -0.518561      1.000000  </code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="netflix-best-shows-of-2022" class="level2">
 <h2 class="anchored" data-anchor-id="netflix-best-shows-of-2022">Netflix Best Shows of 2022</h2>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#import pycountry</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>netflixdf <span class="op">=</span> pd.read_csv(<span class="st">"../websitedata/netflixbestshows2022.csv"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(netflixdf.shape)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(netflixdf))</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>netflixdf.dropna</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf.isnull().sum())</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf.isna().sum())</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>netflixdf <span class="op">=</span> netflixdf.rename(columns<span class="op">=</span>{<span class="st">"TITLE"</span>: <span class="st">"Title"</span>, <span class="st">"RELEASE_YEAR"</span>: <span class="st">"Release Year"</span>, <span class="st">"SCORE"</span>: <span class="st">"Score"</span>, </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"NUMBER_OF_VOTES"</span>: <span class="st">"Votes (Amount)"</span>, <span class="st">"DURATION"</span>: <span class="st">"Duration"</span>, </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"NUMBER_OF_SEASONS"</span>: <span class="st">"Total Seasons"</span>, <span class="st">"MAIN_GENRE"</span>: <span class="st">"Main Genre"</span>, </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"MAIN_PRODUCTION"</span>: <span class="st">"Main Production"</span>})</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf = netflixdf["Main Production"].apply(lambda x: pycountry.countries.get(alpha_3=x).name </span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                                               <span class="co">#if len(x) == 3 else pycountry.countries.get(alpha_2=x).name)</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>netflixdf.sort_values(by <span class="op">=</span> [<span class="st">"Release Year"</span>], ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>netflixdf <span class="op">=</span> netflixdf.drop(<span class="st">"Total Seasons"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf["Votes (Amount)"] = netflixdf["Votes (Amount)"].apply(lambda x: str(x) if x &lt; 50000 else x)</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>netflixdf[<span class="st">"Votes (Amount)"</span>] <span class="op">=</span> netflixdf[<span class="st">"Votes (Amount)"</span>].astype(<span class="bu">str</span>)</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#voters = netflixdf["Votes (Amount)"] &lt; "50000"</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf.loc[voters, "Votes (Amount)"] = "low five"</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf["Votes (Amount)"] = netflixdf["Votes (Amount)"].astype(categorical)</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">#voters1 = netflixdf["Votes (Amount)"] &gt;= "50000") &amp; (netflixdf["Votes (Amount)"] &lt; "100000")</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf.loc[voters1, "Votes (Amount)"] = "high five"</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(netflixdf)</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf.to_csv("C:/Users/Owner/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Score"].min())</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Score"].max())</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Votes (Amount)"].min())</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Votes (Amount)"].max())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#import pycountry</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>netflixdf <span class="op">=</span> pd.read_csv(<span class="st">"../websitedata/netflixWorld2022.csv"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf.shape)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(netflixdf))</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>netflixdf <span class="op">=</span> netflixdf.rename(columns<span class="op">=</span>{<span class="st">"Top TV shows on Netflix worldwide 2022"</span>: <span class="st">"Title"</span>, <span class="st">"Unnamed: 1"</span>: <span class="st">"Points"</span>})</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>netflixdf.drop([<span class="dv">0</span>,<span class="dv">1</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf.isnull().sum())</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf.isna().sum())</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf["Votes (Amount)"] = netflixdf["Votes (Amount)"].apply(lambda x: str(x) if x &lt; 50000 else x)</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf["Votes (Amount)"] = netflixdf["Votes (Amount)"].astype(str)</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#voters = netflixdf["Votes (Amount)"] &lt; "50000"</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf.loc[voters, "Votes (Amount)"] = "low five"</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf["Votes (Amount)"] = netflixdf["Votes (Amount)"].astype(categorical)</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#voters1 = netflixdf["Votes (Amount)"] &gt;= "50000") &amp; (netflixdf["Votes (Amount)"] &lt; "100000")</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf.loc[voters1, "Votes (Amount)"] = "high five"</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(netflixdf)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#netflixdf.to_csv("C:/Users/Owner/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Score"].min())</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Score"].max())</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Votes (Amount)"].min())</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#print(netflixdf["Votes (Amount)"].max())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(246, 8)
-&lt;class 'pandas.core.frame.DataFrame'&gt;
-                          Title  Release Year  Score Votes (Amount)  Duration  \
-0                  Breaking Bad          2008    9.5       low five        48   
-1    Avatar: The Last Airbender          2005    9.3       low five        24   
-2                    Our Planet          2019    9.3       low five        50   
-3                  Kota Factory          2019    9.3          66985        42   
-4                The Last Dance          2020    9.1       low five        50   
-..                          ...           ...    ...            ...       ...   
-241                 Evil Genius          2018    7.5       low five        48   
-242              13 Reasons Why          2017    7.5       low five        58   
-243                       Lupin          2021    7.5       low five        46   
-244          All of Us Are Dead          2022    7.5       low five        61   
-245     I Am Not Okay with This          2020    7.5          56459        21   
-
-      Main Genre Main Production  
-0          drama              US  
-1          scifi              US  
-2    documentary              GB  
-3          drama              IN  
-4    documentary              US  
-..           ...             ...  
-241        crime              US  
-242        drama              US  
-243        crime              FR  
-244       action              KR  
-245       comedy              US  
-
-[246 rows x 7 columns]</code></pre>
+<pre><code>                                         Title  Points
+2                              Stranger Things  63,800
+3                                     Manifest  53,337
+4                               Inventing Anna  34,393
+5   Dahmer - Monster: The Jeffrey Dahmer Story  34,086
+6                                   Bridgerton  30,229
+7                                    Wednesday  30,102
+8                      Café con aroma de mujer  28,765
+9                          Pasión de gavilanes  27,591
+10                          All of Us Are Dead  26,955
+11                                   The Crown  25,874
+12                  Extraordinary Attorney Woo  24,352
+13                Pablo Escobar, The Drug Lord  24,273
+14                                       Ozark  23,757
+15                                 The Sandman  23,026
+16                           Business Proposal  21,123
+17                         Yo soy Betty la fea  20,912
+18                                   Cobra Kai  20,786
+19                          The Lincoln Lawyer  19,521
+20                               Love Is Blind  18,889
+21                                       Elite  18,659
+22                              Emily in Paris  18,288
+23                                        1899  17,988
+24                            Alchemy of Souls  17,326
+25                        The Umbrella Academy  17,073
+26                                 The Watcher  15,699</code></pre>
 </div>
 </div>
 </section>
@@ -585,486 +668,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="text-api" class="level2">
-<h2 class="anchored" data-anchor-id="text-api">Text API</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="wiki-data-wordcloud-for-visuals-and-df-for-analysis" class="level1">
+<h1>Wiki Data (Wordcloud for Visuals and DF for analysis)</h1>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> wikipedia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">##love island, burna boy, peaky blinders</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wikipedia.search(<span class="st">"Stranger Things"</span>, results<span class="op">=</span><span class="dv">10</span>, suggestion<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>['Stranger Things',
+ 'Eleven (Stranger Things)',
+ 'List of Stranger Things episodes',
+ 'Stranger Things (season 4)',
+ 'Vecna (Stranger Things)',
+ 'List of Stranger Things characters',
+ 'Stranger Things (season 3)',
+ 'Stranger Things (season 1)',
+ 'Stranger Things (season 2)',
+ 'Stranger Things: The First Shadow']</code></pre>
 </div>
-<p>Love Island</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>baseURL <span class="op">=</span> <span class="st">"https://newsapi.org/v2/everything?"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>total_requests<span class="op">=</span><span class="dv">3</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>verbose<span class="op">=</span><span class="va">True</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="st">'cf4c8b44470b4d078e5560aab750d39e'</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>TOPIC<span class="op">=</span><span class="st">'love island'</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>URLpost <span class="op">=</span> {<span class="st">'apiKey'</span>: <span class="st">'cf4c8b44470b4d078e5560aab750d39e'</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'q'</span>: <span class="st">'+'</span><span class="op">+</span>TOPIC,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'sortBy'</span>: <span class="st">'relevancy'</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'totalRequests'</span>: <span class="dv">1</span>}</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(baseURL)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#GET DATA FROM API</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(baseURL, URLpost) <span class="co">#request data from the server</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># print(response.url);  </span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> response.json() <span class="co">#extract txt data from request into json</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># PRETTY PRINT</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.digitalocean.com/community/tutorials/python-pretty-print-json</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response, indent<span class="op">=</span><span class="dv">2</span>))</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># #GET TIMESTAMP FOR PULL REQUEST</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> datetime.now().strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">-H%H-M%M-S%S"</span>)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE TO FILE </span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(timestamp<span class="op">+</span><span class="st">'-newapi-raw-data.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    json.dump(response, outfile, indent<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> string_cleaner(input_string): <span class="co">#replace 'input_string' with 'avocado'</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span>re.sub(<span class="vs">r"""</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="vs">                    [,.;@#?!&amp;$-]+  # Accept one or more copies of punctuation</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="vs">                    \ *           # plus zero or more copies of a space,</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="vs">                    """</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" "</span>,          <span class="co"># and replace it with a single space</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                    input_string, flags<span class="op">=</span>re.VERBOSE)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">#REPLACE SELECT CHARACTERS WITH NOTHING</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> re.sub(<span class="st">'[’.]+'</span>, <span class="st">''</span>, input_string)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">#ELIMINATE DUPLICATE WHITESPACES USING WILDCARDS</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> re.sub(<span class="vs">r'\s+'</span>, <span class="st">' '</span>, out)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">#CONVERT TO LOWER CASE</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span>out.lower()</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ERROR"</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span><span class="st">''</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#page = wikipedia.summary("Stranger Things (season 3)", sentences=10)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> wikipedia.WikipediaPage(<span class="st">"Stranger Things (season 3)"</span>).content</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#page = wikipedia.page("Stranger Things (season 3)")</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(page)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># this gets information from the page https://en.wikipedia.org/wiki/Stranger_Things_(season_4)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The third season of the American science fiction horror television series Stranger Things was released worldwide on the streaming service Netflix on July 4, 2019. The series was created by the Duffer Brothers, who also serve as executive producers along with Shawn Levy, Dan Cohen and Iain Paterson. It was preceded by season 2 and succeeded by season 4. 
+The season stars Winona Ryder, David Harbour, Finn Wolfhard, Millie Bobby Brown, Gaten Matarazzo, Caleb McLaughlin, Noah Schnapp, Sadie Sink, Natalia Dyer, Charlie Heaton, Joe Keery, Dacre Montgomery, Maya Hawke, Priah Ferguson, and Cara Buono. Brett Gelman, Francesca Reale, Cary Elwes, Alec Utgoff, and Andrey Ivchenko appear in recurring roles. The season received positive reviews from critics, who praised the visuals, humor, performances, and emotional weight, though some criticized its excessive pop culture references and narrative structure.
+
+
+== Premise ==
+In the summer of 1985, in Hawkins, the newly opened Starcourt Mall has become the center of attention in town, causing other stores to close their business due to its popularity. Jim Hopper disapproves of Mike Wheeler's relationship with his daughter Eleven, prompting him to intervene in their relationship, and leading to Eleven's friendship with Max Mayfield. Still recovering from Bob Newby's death, Joyce Byers considers moving out of Hawkins with her children. However, magnetic disruptions lead her to believe that the Upside Down has returned, so she enlists Hopper's help in uncovering the truth. While Mike and Lucas Sinclair attempt to repair his relationship with Eleven, Will Byers begins experiencing premonitions from the Upside Down, despite Eleven's closing of the original gate that led to his disappearance. He believes the Mind Flayer is still alive and back in Hawkins. As Nancy Wheeler and Jonathan Byers investigate the effects of the Mind Flayer's influence, Dustin Henderson, Steve Harrington, newcomer Robin Buckley, and Erica Sinclair begin investigating a potential Soviet infiltration of Hawkins. Meanwhile, Max's stepbrother Billy Hargrove is taken over by the Mind Flayer, forced to possess other citizens of Hawkins to fulfill the Mind Flayer's new plan. Eleven and her friends have no choice but to battle Billy, the other possessed victims, and destroy the Mind Flayer in its new and terrifying form, once and for all.
+
+
+== Cast and characters ==
+
+
+== Episodes ==
+
+
+== Production ==
+
+
+=== Development ===
+Levy noted in November 2015 that he and the Duffer Brothers had already begun planning a potential third season, saying, "We are not gonna be caught off guard and we don't wanna be making stuff up like the day before we have to write it and make it, so we are definitely optimistic and we have started thinking ahead." The Duffer Brothers anticipate having about four to five seasons to work with, but do want to "have a really finite ending" while the series is still at a height of success, according to Matt, rather than letting it draw out indefinitely. In August 2017, the Duffer Brothers confirmed there would be a third season, with the likelihood of one more season following that, with Ross saying, "We're thinking it will be a four-season thing and then out". However, executive producer Shawn Levy later suggested that either four or five total seasons were possibilities, claiming that "the truth is, we're definitely going four seasons and there's very much the possibility of a fifth. Beyond that, it becomes, I think, very unlikely." Matt Duffer later commented that no official decision has been made, claiming that "It's hard, like four seems short, five seems long. So I don't know what to do." In December 2017, Netflix officially confirmed that they had green lit the third season, consisting of eight episodes. Levy also confirmed that a fourth season was "definitely happening" and that there was potential for a fifth season. A year later, the episode titles for season three were revealed, along with confirming the season would be named Stranger Things 3, similar to the second season.
+
+
+=== Writing ===
+Writing for the third season began before the second season's premiere, with a good portion being written in twelve-to-fourteen-hour bouts by the series' creators. It was reported that Netflix wanted both the third and fourth seasons to be written simultaneously as to facilitate a back-to-back production schedule, for the actors were aging faster than their on-screen characters, but both the Duffer Brothers and producer Shawn Levy opted to focus only on the third season to ensure it was better-developed and more fleshed out.In terms of narrative, Levy said the season would be less about Will, saying, "We're not going to put Will through hell for a third season in a row. He'll be dealing with stuff, but he won't be at rock bottom... We're [going to be] dealing with forces of evil that are new." David Harbour has said that the third season also draws heavily from the film Fletch. Both Levy and Natalia Dyer echo sentiments that this season's events will be more adult-oriented, with Dyer calling the season's narrative "...Bigger, darker, [and] scarier."The early pitch documents for the season featured a scene that had the Mind Flayer monster rampaging through the Hawkins Fourth of July Parade, but the idea was later scrapped as the scripts were written.
+
+
+=== Casting ===
+The third season sees Ryder, Harbour, Wolfhard, Brown, Matarazzo, McLaughlin, Schnapp, Sink, Dyer, Heaton, Buono, Keery, and Montgomery return. In March 2018, it was announced that Priah Ferguson's character had been promoted from a guest role  to a reoccurring role and that Maya Hawke has been cast as Robin, a new lead who's been described as an "alternative girl." Hawke's character was later revealed to be Steve's co-worker at the Scoops Ahoy ice cream parlor in the newly built Starcourt Mall. Cary Elwes and Jake Busey's castings were announced in April 2018; Elwes was cast as Mayor Kline, a "classic '80s politician – more concerned with his own image than with the people of the small town he governs," and Busey as Bruce, a shifty reporter who works at the Hawkins Post. Francesca Reale was cast as Heather, a popular lifeguard at the community pool. As of September 2018, casting had still not been completed for the season, which at that point had been shooting for five months and was less than two months from completion. Carmen Cuba, the show's casting director, attributed the slower-than-usual casting process to the heightened secrecy of the plot paired with certain roles' shifting characterizations and importance.For the third season, it was reported that several of the cast members would receive pay raises. Ryder and Harbour received an increase to $350,000 an episode from $150,000 and $80,000 respectively; Wolfhard, Matarazzo, McLaughlin, and Schnapp earned a pay increase to over $200,000 an episode, possibly as much as $250,000, a significant increase from the reported $20,000 they had made in season one (later increased by $60,000); and Dyer, Heaton, and Keery received approximately $150,000 an episode. Brown's wage increase was not disclosed but was estimated to be bigger than that of her young counterparts. Some sources suggest she made at least $250,000 and may have received between $300,000 and $350,000 per episode.
+
+
+=== Filming ===
+Filming for the third season officially began on April 23, 2018. Jackson, Georgia remained as primary filming area for scenes in Hawkins' downtown area. The South Bend Pool in Atlanta served as the Hawkins community pool. The major setpiece of the season, Starcourt Mall, was filmed at a re-dressed Gwinnett Place Mall near Duluth, Georgia. The production team had searched around Georgia for a dead mall, one either closed or with significantly reduced vacancy, for film, and found Gwinnett was nearly perfect, having been built in 1984 and thus having the staples of construction from malls in that period. They secured a portion of the mall that had been vacant for some time, redressing the storefronts and food court to feature brands of the 80s, paying attention to which stores likely had made it to Indiana by 1985. Outside "Scoops Ahoy!", a fictional store, they had to make one exception for "Glamour Shots", which was a real chain of photo studios but did not come to malls until after 1985; as a scene of Eleven and Max enjoying a photo shoot was a necessary plot element, the design team created a similar photo studio but with a new fictitious name. Not only did they recreate the facade of each of the storefronts, but they worked to fully stock them as well, in anticipation of any last-minute filming ideas the Duffers may have had. A custom-built grid cloth was employed to completely block sunlight from entering the atrium of the food court to enable filming night scenes during the day.In addition to the aforementioned sets, filming also occurred at pre-existing structures dressed as the Hawkins town hall and Mayor Kline's house. The production also used a total of seven sound stages, with an average of three sets per stage. To create the "black void", the visual manifestation of Eleven's telepathic ruminations, filming took place in a pool that was "painted black [and filled] with about an inch of water, [and was] surrounded by 270 degrees of duvetyne around thirty feet high". The void's look was tweaked slightly for the third season and shooting in the newer, smaller space required a 50-foot (15 m) Technocrane and two boom operators. An empty field was used to film the scenes set at the Hawkins Fun Fair, with the crew arriving just three weeks prior to the opening of a previously booked medieval fair. Period-appropriate carnival rides were trucked into the set from locations across the country, and the crew retrofitted the rides' modern lighting with bulbs that would have been used in the 1980s.On September 27, 2018, Brown was spotted filming an emotional scene with stunt doubles and a child dressed in a baseball uniform at a beach in Malibu, California. Filming for the third season concluded on November 12, 2018. Regarding the lengthy hiatus between the second and third seasons, Netflix programming executive Cindy Holland noted "[the Duffer Brothers and Shawn Levy] understand the stakes are high. They want to deliver something bigger and better than last year. I think it's going to be a fantastic season. It will be worth the wait."
+
+
+=== Visual effects ===
+Heading into production for the first season of Stranger Things, the Duffer Brothers intended on shooting a number of special effects using practical methods. However, due to issues with the deployment of the practical effects on-set, coupled with a dissatisfaction with the results of the filmed practical material, The Duffer Brothers became much more keen on utilizing digitally-produced special effects for the second season, and even more so for the third season. During pre-production, the Duffers sat down with Senior VFX Supervisor Paul Graff, production designer Chris Trujillo, and senior concept illustrator Michael Maher to plan out the digital visual effects for the season. One of the most important topics of discussion was the design of the "corporeal" manifestation of the "Shadow Monster/Mindflayer," which the Duffers wanted to be cognizant of the titular "Thing" from John Carpenter's 1982 science fiction horror film The Thing. To emulate this decided look, the group decided the creature should have "some real weight and, consequently, a different new feel for [the animation], including specularity and moisture," an aesthetic that also translated to the "Tom/Bruce" monster that attacks Nancy at the hospital.The team for season three found it important for the actors to have some sort of on-set physical guide to interact with the large would-be digital entities, as money wasn't budgeted for any sort of costly on-set augmented reality previsualization renderings. Graff noted it was impractical and too expensive to 3D print a rough replica of the physical "Shadow Monster/Mindflayer", as had been done with creatures in the previous season, especially considering the monster is essentially "something the size of a T-Rex invading a shopping mall." A one-hundred pound "zeppelin-shaped creature shell" was initially constructed for the actors to interact with, but it too was deemed impractical and was scrapped. Graff eventually went out and purchased "the largest object [he] could think of" — a blow-up beach ball — and taped it to the end of a twenty-foot boom pole so he could "puppeteer the ‘head’ enough to provide an eyeline for the actors while also giving camera operators a shot at framing for and tracking the creature's movements.” Graff employed a much more unique means to visualize the "Tom/Bruce" monster during filming since the extremely erratic and complicated lighting situation of the scenes that it was featured in mounted a number of potential hardships to be faced during postproduction work:
+
+I came up with the idea of having a stunt guy wearing this giant silver ball helmet while standing in for an incarnation of the monster that was 6-feet or 7-feet tall. This helmet let us see the variance in brightness of the lights from frame to frame. I told assistant stunt coordinator Ken Barefield that I needed him to really be that monster, conveying all that evil energy. ‘I need you to roar – and you can’t let yourself be intimidated by the fact you’re wearing a ridiculous red spandex suit with a giant silver ball helmet.’ He told me, ‘Don’t worry, Paul, I’ve got this – I’ll deliver for you’ – and then he sure did. The lights flicker and go out, and when they come back on, this guy is screaming at the top of his lungs, charging like a bull down the hallway. It looked completely absurd, and yet at the same time, it was really cool, one of the most amazing moments of the year for me.
+
+
+=== Music ===
+
+The original soundtrack album for the third season, titled Stranger Things 3, was released digitally on June 28, 2019, via Lakeshore and Invada Records. Like the previous two seasons, the soundtrack was composed by Kyle Dixon and Michael Stein of the electronic band Survive. The album was also released on physical formats such as CD, vinyl, and cassette.In addition to Dixon and Stein's original soundtrack, the season features several songs selected from the 1980s and earlier eras. Legacy Recordings released a 16-track compilation of these songs on July 5, 2019.
+The finale of the episode "E Pluribus Unum", particularly the scenes involving Eleven's telepathic encounter with the Mind Flayer-possessed Billy, contains excerpts of "Confrontation and Rescue" from the second act of Satyagraha by Philip Glass.
+Of note was the use of "The NeverEnding Story", the theme to the 1984 film of the same name, which is used in the final episode when Suzie refuses to provide the critical code until Dustin sings it to her. The Duffers had wanted to introduce Suzie into the show's narrative in some dramatic fashion while giving Matarazzo, who has sung on Broadway before, a chance to show off his own vocals. Initially, they were planning to use "The Ent and the Entwife" song from The Lord of the Rings, but aware that Amazon Studios were developing its own Lord of the Rings series, decided to change direction. The Duffers credit writer Curtis Gwinn for using "The NeverEnding Story" as the replacement. Matarazzo and Gabriella Pizzolo, the actress playing Suzie and also a seasoned singer on Broadway, were on sets near each other when they sang the song together and were able to harmonize the song as well without the backing music. As their characters were not meant to be in that much synchronization due to being in two different places, the song's backing track and some autotuning were used to blend their singing to their respective settings and the tone of the soundtrack. According to the cast and to composers Kyle Dixon and Michael Stein, the song became an earworm for many of the cast on the day that scene was filmed. Later in the episode, Lucas and Max, played by Caleb McLaughlin and Sadie Sink, sing the song in duet back to Dustin to mock him; both McLaughlin and Sink also have had experience in Broadway musicals. As a result of its appearance in the series, "The NeverEnding Story" drew an 800% increase in viewership and streaming requests on YouTube and Spotify over the days after initial broadcast, putting Limahl, the song's artist, briefly back in the spotlight.
+
+
+== Marketing ==
+Promotion for the third season began with the first day of production, when Netflix released a video featuring the cast as they met for the season's first script read-through. On July 16, 2018, the first teaser trailer for the season was released. The teaser, which is the first to feature footage shot for the new season, is styled as an in-universe commercial for the newly built Starcourt Mall, one of the main settings for the season's events. The "commercial" lists some of the stores found in the mall as well as restaurants in the "state-of-the-art" food court, and closes with Steve (Joe Keery) and Robin (Maya Hawke) saying "Ahoy!" during a short plug for one of the food court's establishments, an ice cream parlor called Scoops Ahoy. On December 9, 2018, during an appearance at the 2018 Comic Con Experience at the São Paulo Expo in São Paulo, Brazil, Noah Schnapp, Sadie Sink, and Caleb McLaughlin presented a new teaser which revealed the titles of the eight episodes in the new season. Hours later, the teaser was released online across all of the official Stranger Things social media accounts.On December 31, pedestrians in New York City's Times Square noticed a video playing on a loop advertising a special announcement "sponsored" by the Starcourt Mall. According to the video, the announcement was slated to be aired on the fictional ABC network affiliate WIYZ. At midnight EST, Netflix released a new teaser announcing the release date of the season to be July 4, 2019. The teaser utilized footage from Dick Clark's New Year's Rockin' Eve 1984, specifically the countdown to the New Year. As the countdown commenced, the video slowly turned upside down and became fuzzy, and Mike could be heard calling out for Eleven as the video cut in between different recordings of computers running MS-DOS. The season's first poster, featuring a menacing creature slowly approaching the cast while they're enjoying Independence Day festivities, was released concurrently with the teaser.On March 19, 2019, the official Stranger Things social media accounts posted a short clip of rats scurrying through a dilapidated industrial area with the caption "It's almost feeding time." This turned out to be a prelude to the release of stills and the first official trailer the next day on March 20. The trailer quickly became the most-viewed video on Netflix's YouTube channel, amassing 22 million views in the first week of its release. On May 21, the first clip from the season was released in tandem with cast posters. The clip, which features Billy flirting with Karen Wheeler at the local pool, includes notable references to the early-1980s comedy films Caddyshack and Fast Times at Ridgemont High. Netflix released the final trailer on June 20, 2019.In July 2019, actors Finn Wolfhard and Caleb McLaughlin took part in a Q&amp;A session at the Open'er Festival in Gdynia, Poland. The festival also boasted a replica of the Palace Arcade filled with retro coin-ops – such as Space Invaders, Pac-Man, Donkey Kong and Dig Dug.
+
+
+=== Tie-ins ===
+Netflix revealed they had partnered with around 75 companies to produce tie-in products to promote the third season. For many of these deals, there was no financial exchange between Netflix and the third-parties, with Netflix allowing the third-parties to generate their own marketing buzz for their products while helping to promote Stranger Things. Some of the more notable tie-ins include:
+
+Swedish apparel retailer H&amp;M offered a clothing collection that includes pieces worn on-screen by several of the series' actors on May 24, 2019. The advertisement campaign for the clothing and accessory lines features Dacre Montgomery (Billy) as a model and revolves around his character's summer job as a lifeguard.
+The Coca-Cola Company revived their ill-received New Coke soft drink for a limited time production run in the month leading up to the season's release. The unpopular soft drink was released around the time frame of the season's setting, and a number of episodes featured the beverage prominently placed within the frame. New Coke was sold at special upside-down vending machines in some United States cities and through Coca-Cola's web store.
+Ice cream chain Baskin-Robbins started offering Stranger Things-inspired menu items in the months prior to the season's release, and at the launch of the third season, several Baskin-Robbins stores across the United States and Canada were made up into the fictional "Scoops Ahoy!" ice cream parlor in the show for about two weeks.
+Fast food chain Burger King started serving special themed 'upside down' Whoppers as a reference to the Upside Down (an alternative universe in the story of the show), including special edition items sold at 11 special locations in the weeks leading up to the premiere. And selling special ketchup packets displaying a nose in reference to the nose bleeding of the character, Eleven. Burger King also promoted their restaurant commercials, cups and boxes in a special 1980s theme as a tie-in with Coca-Cola. The restaurant was also featured in the food court of the Starcourt Mall.
+In the week leading to Stranger Things 3's release, Microsoft teased "Windows 1.0", the company's first graphic operating system introduced in 1985. Microsoft released this mock version of "Windows 1.0" as an app for Windows 10 on July 8, 2019. The app features a similar interface as the original software, with various Easter eggs to the television series scattered through the app.
+Netflix partnered with Epic Games to include Stranger Things tie-ins into Fortnite Battle Royale around the premiere of the third season.
+
+
+== Video game ==
+A video game adaptation titled Stranger Things 3: The Game was released hours after the third season premiered on July 4, 2019. It was developed by BonusXP and published by Netflix The game was criticized by reviewers for being an exact scene-by-scene replica of the season.
+
+
+== Reception ==
+
+
+=== Audience viewership ===
+
+
+==== Netflix ratings ====
+Within four days of its release, Netflix reported that over 40.7 million accounts had seen at least 70% of one episode of the third season, a record viewership for any Netflix program, while 18.2 million had seen the entire season within the time. Netflix reported in October 2019 that over 64 million households had watched Stranger Things 3 within the first four weeks of its release.
+
+
+==== Nielsen ratings ====
+Nielsen ratings recorded viewership data for those who viewed the series within the United States on a TV set; the data does not account for mobile, tablet, and PC devices, nor viewers outside of the United States.
+
+
+=== Critical response ===
+On Rotten Tomatoes, the third season received an approval rating of 89% based on 141 reviews and an average rating of 7.9/10. The site's critical consensus states, "Vibrant and charming, Stranger Things transforms itself into a riveting—if familiar—summer ride that basks in its neon-laden nostalgia without losing sight of the rich relationships that make the series so endearing." Writing in the New Statesman, Emily Bootle considered the third season an improvement on the second stating that the third "returned to strength" after a confusing second season and that "season three has largely brought back what made the show unique in the first place". Hugh Montgomery at the BBC awarded 5 stars, describing the third season as "an exhilarating example of a franchise hitting new heights that Hollywood would do well to learn from." On Metacritic, the third season has a weighted average score of 72 out of 100, based on 28 critics, indicating "generally favorable reviews."On the dissenting side, Darren Franich of Entertainment Weekly criticized the third season for looking like a Reagan-era pop culture mixtape. Ed Power of The Telegraph blamed Duffer Brothers for refusing "to stray from the Goonies-meets-Stephen King formula" and recycling their "well-worn bag of retro references to increasingly underwhelming effect", producing the limpest installment of the three. His opinion was echoed by Hank Stuever of The Washington Post, who felt almost heartbroken for "the Duffers working so hard to re-create an elusive vibe" of the 1980s with a "mishmash of ingredients" only to fail to create a fully entertaining show. Writing in National Review, Daniel Payne criticized the season's "sloppy storytelling" and "cornball humor" compared to the previous seasons, claiming that season three was "frenetic and bewildering where the first two seasons were slow, careful, and rewarding in crafting their plots."
+
+
+=== Accolades ===
+
+As part of the 2019 Teen Choice Awards Stranger Things received a nomination for Choice Summer TV show. Caleb McLaughlin, Finn Wolfhard, Gaten Matarazzo, and Noah Schnapp were all nominated for Choice Summer TV actor for their work on the series while Millie Bobby Brown was nominated for Choice Summer TV actress for her work on the series. Stranger Things, Schnapp, and Brown all won awards in their respective categories.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+Stranger Things on Netflix 
+Stranger Things at IMDb</code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>article_list<span class="op">=</span>response[<span class="st">'articles'</span>]   <span class="co">#list of dictionaries for each article</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>article_keys<span class="op">=</span>article_list[<span class="dv">0</span>].keys()</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AVAILABLE KEYS:"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(article_keys)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>index<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>cleaned_data<span class="op">=</span>[]<span class="op">;</span>  </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> article_list:</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    tmp<span class="op">=</span>[]</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(verbose):</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#------------------------------------------"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#"</span>,index)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#------------------------------------------"</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> article_keys:</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(verbose):</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(key)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(article[key])</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'source'</span>):</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>string_cleaner(article[key][<span class="st">'name'</span>])</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            tmp.append(src) </span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'author'</span>):</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            author<span class="op">=</span>string_cleaner(article[key])</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">#ERROR CHECK (SOMETIMES AUTHOR IS SAME AS PUBLICATION)</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>(src <span class="kw">in</span> author): </span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" AUTHOR ERROR:"</span>,author)<span class="op">;</span>author<span class="op">=</span><span class="st">'NA'</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>            tmp.append(author)</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'title'</span>):</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'description'</span>):</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'content'</span>):</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'publishedAt'</span>):</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>            <span class="co">#DEFINE DATA PATERN FOR RE TO CHECK  .* --&gt; wildcard</span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>            ref <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">'.*-.*-.*T.*:.*:.*Z'</span>)</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>            date<span class="op">=</span>article[key]</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>(<span class="kw">not</span> ref.match(date)):</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" DATE ERROR:"</span>,date)<span class="op">;</span> date<span class="op">=</span><span class="st">"NA"</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>            tmp.append(date)</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    cleaned_data.append(tmp)</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    index<span class="op">+=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(cleaned_data, columns<span class="op">=</span> [<span class="st">'source'</span>, <span class="st">'author'</span>, <span class="st">'title'</span>, <span class="st">'description'</span>, <span class="st">'url'</span>, <span class="st">'content'</span>])</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> df[[<span class="st">'title'</span>, <span class="st">'description'</span>]]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df_new.to_csv(<span class="st">'cleanedloveisland.csv'</span>, index<span class="op">=</span><span class="va">False</span>) <span class="co">#,index_label=['title','src','author','date','description'])</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_new.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MODIFIED FROM </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://towardsdatascience.com/simple-wordcloud-in-python-2ae54a9f58e5</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_word_cloud(my_text):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exit()</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import package</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define a function to plot word cloud</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_cloud(wordcloud):</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set figure size</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">30</span>))</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display image</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        plt.imshow(wordcloud) </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No axis details</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate word cloud</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        width <span class="op">=</span> <span class="dv">3000</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        height <span class="op">=</span> <span class="dv">2000</span>, </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        background_color<span class="op">=</span><span class="st">'salmon'</span>, </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        colormap<span class="op">=</span><span class="st">'Pastel1'</span>, </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        collocations<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        stopwords <span class="op">=</span> STOPWORDS).generate(my_text)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    plot_cloud(wordcloud)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> <span class="st">"In the summer of 1985, in Hawkins, the newly opened Starcourt Mall has become the center of attention in town, causing other stores to close their business due to its popularity. Jim Hopper disapproves of Mike Wheeler's relationship with his daughter Eleven, prompting him to intervene in their relationship, and leading to Eleven's friendship with Max Mayfield. Still recovering from Bob Newby's death, Joyce Byers considers moving out of Hawkins with her children. However, magnetic disruptions lead her to believe that the Upside Down has returned, so she enlists Hopper's help in uncovering the truth. While Mike and Lucas Sinclair attempt to repair his relationship with Eleven, Will Byers begins experiencing premonitions from the Upside Down, despite Eleven's closing of the original gate that led to his disappearance. He believes the Mind Flayer is still alive and back in Hawkins. As Nancy Wheeler and Jonathan Byers investigate the effects of the Mind Flayer's influence, Dustin Henderson, Steve Harrington, newcomer Robin Buckley, and Erica Sinclair begin investigating a potential Soviet infiltration of Hawkins. Meanwhile, Max's stepbrother Billy Hargrove is taken over by the Mind Flayer, forced to possess other citizens of Hawkins to fulfill the Mind Flayer's new plan. Eleven and her friends have no choice but to battle Billy, the other possessed victims, and destroy the Mind Flayer in its new and terrifying form, once and for all."</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>generate_word_cloud(page)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="datacleaning_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
-<p>Afrobeats</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>baseURL <span class="op">=</span> <span class="st">"https://newsapi.org/v2/everything?"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>total_requests<span class="op">=</span><span class="dv">3</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>verbose<span class="op">=</span><span class="va">True</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="st">'cf4c8b44470b4d078e5560aab750d39e'</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>TOPIC<span class="op">=</span><span class="st">'afrobeats'</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>URLpost <span class="op">=</span> {<span class="st">'apiKey'</span>: <span class="st">'cf4c8b44470b4d078e5560aab750d39e'</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'q'</span>: <span class="st">'+'</span><span class="op">+</span>TOPIC,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'sortBy'</span>: <span class="st">'relevancy'</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'totalRequests'</span>: <span class="dv">1</span>}</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(baseURL)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#GET DATA FROM API</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(baseURL, URLpost) <span class="co">#request data from the server</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># print(response.url);  </span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> response.json() <span class="co">#extract txt data from request into json</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># PRETTY PRINT</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.digitalocean.com/community/tutorials/python-pretty-print-json</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response, indent<span class="op">=</span><span class="dv">2</span>))</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># #GET TIMESTAMP FOR PULL REQUEST</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> datetime.now().strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">-H%H-M%M-S%S"</span>)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE TO FILE </span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(timestamp<span class="op">+</span><span class="st">'-newapi-raw-data.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    json.dump(response, outfile, indent<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> string_cleaner(input_string):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span>re.sub(<span class="vs">r"""</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="vs">                    [,.;@#?!&amp;$-]+  # Accept one or more copies of punctuation</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="vs">                    \ *           # plus zero or more copies of a space,</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="vs">                    """</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" "</span>,          <span class="co"># and replace it with a single space</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                    input_string, flags<span class="op">=</span>re.VERBOSE)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">#REPLACE SELECT CHARACTERS WITH NOTHING</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> re.sub(<span class="st">'[’.]+'</span>, <span class="st">''</span>, input_string)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">#ELIMINATE DUPLICATE WHITESPACES USING WILDCARDS</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> re.sub(<span class="vs">r'\s+'</span>, <span class="st">' '</span>, out)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">#CONVERT TO LOWER CASE</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span>out.lower()</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ERROR"</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span><span class="st">''</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>article_list<span class="op">=</span>response[<span class="st">'articles'</span>]   <span class="co">#list of dictionaries for each article</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>article_keys<span class="op">=</span>article_list[<span class="dv">0</span>].keys()</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AVAILABLE KEYS:"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(article_keys)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>index<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>cleaned_data<span class="op">=</span>[]<span class="op">;</span>  </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> article_list:</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    tmp<span class="op">=</span>[]</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(verbose):</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#------------------------------------------"</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#"</span>,index)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#------------------------------------------"</span>)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> article_keys:</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(verbose):</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(key)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(article[key])</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'title'</span>):</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'description'</span>):            </span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(key)</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(article[key])</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'source'</span>):</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>string_cleaner(article[key][<span class="st">'name'</span>])</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>            tmp.append(src) </span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'author'</span>):</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>            author<span class="op">=</span>string_cleaner(article[key])</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>            <span class="co">#ERROR CHECK (SOMETIMES AUTHOR IS SAME AS PUBLICATION)</span></span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>(src <span class="kw">in</span> author): </span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" AUTHOR ERROR:"</span>,author)<span class="op">;</span>author<span class="op">=</span><span class="st">'NA'</span></span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>            tmp.append(author)</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'content'</span>):</span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'publishedAt'</span>):</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>            <span class="co">#DEFINE DATA PATERN FOR RE TO CHECK  .* --&gt; wildcard</span></span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>            ref <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">'.*-.*-.*T.*:.*:.*Z'</span>)</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>            date<span class="op">=</span>article[key]</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>(<span class="kw">not</span> ref.match(date)):</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" DATE ERROR:"</span>,date)<span class="op">;</span> date<span class="op">=</span><span class="st">"NA"</span></span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>            tmp.append(date)</span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    cleaned_data.append(tmp)</span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>    index<span class="op">+=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(cleaned_data, columns<span class="op">=</span> [<span class="st">'source'</span>, <span class="st">'author'</span>, <span class="st">'title'</span>, <span class="st">'description'</span>, <span class="st">'url'</span>, <span class="st">'content'</span>])</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df_newer <span class="op">=</span> df[[<span class="st">'title'</span>, <span class="st">'description'</span>]]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df_newer.to_csv(<span class="st">'cleanedafrobeats.csv'</span>, index<span class="op">=</span><span class="va">False</span>) <span class="co">#,index_label=['title','src','author','date','description'])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Peaky Blinders</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>baseURL <span class="op">=</span> <span class="st">"https://newsapi.org/v2/everything?"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>total_requests<span class="op">=</span><span class="dv">3</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>verbose<span class="op">=</span><span class="va">True</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="st">'cf4c8b44470b4d078e5560aab750d39e'</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>TOPIC<span class="op">=</span><span class="st">'peaky blinders'</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>URLpost <span class="op">=</span> {<span class="st">'apiKey'</span>: <span class="st">'cf4c8b44470b4d078e5560aab750d39e'</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'q'</span>: <span class="st">'+'</span><span class="op">+</span>TOPIC,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'sortBy'</span>: <span class="st">'relevancy'</span>,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'totalRequests'</span>: <span class="dv">1</span>}</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(baseURL)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co">#GET DATA FROM API</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(baseURL, URLpost) <span class="co">#request data from the server</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># print(response.url);  </span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> response.json() <span class="co">#extract txt data from request into json</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># PRETTY PRINT</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.digitalocean.com/community/tutorials/python-pretty-print-json</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response, indent<span class="op">=</span><span class="dv">2</span>))</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># #GET TIMESTAMP FOR PULL REQUEST</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> datetime.now().strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">-H%H-M%M-S%S"</span>)</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co"># SAVE TO FILE </span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(timestamp<span class="op">+</span><span class="st">'-newapi-raw-data.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    json.dump(response, outfile, indent<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> string_cleaner(input_string):</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span>re.sub(<span class="vs">r"""</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="vs">                    [,.;@#?!&amp;$-]+  # Accept one or more copies of punctuation</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="vs">                    \ *           # plus zero or more copies of a space,</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="vs">                    """</span>,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" "</span>,          <span class="co"># and replace it with a single space</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                    input_string, flags<span class="op">=</span>re.VERBOSE)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">#REPLACE SELECT CHARACTERS WITH NOTHING</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> re.sub(<span class="st">'[’.]+'</span>, <span class="st">''</span>, input_string)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">#ELIMINATE DUPLICATE WHITESPACES USING WILDCARDS</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> re.sub(<span class="vs">r'\s+'</span>, <span class="st">' '</span>, out)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">#CONVERT TO LOWER CASE</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span>out.lower()</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ERROR"</span>)</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        out<span class="op">=</span><span class="st">''</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>article_list<span class="op">=</span>response[<span class="st">'articles'</span>]   <span class="co">#list of dictionaries for each article</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>article_keys<span class="op">=</span>article_list[<span class="dv">0</span>].keys()</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AVAILABLE KEYS:"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(article_keys)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>index<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>cleaned_data<span class="op">=</span>[]<span class="op">;</span>  </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> article_list:</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    tmp<span class="op">=</span>[]</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(verbose):</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#------------------------------------------"</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#"</span>,index)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"#------------------------------------------"</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> article_keys:</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(verbose):</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(key)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(article[key])</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"----------------"</span>)</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'source'</span>):</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>string_cleaner(article[key][<span class="st">'name'</span>])</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>            tmp.append(src) </span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'author'</span>):</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>            author<span class="op">=</span>string_cleaner(article[key])</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">#ERROR CHECK (SOMETIMES AUTHOR IS SAME AS PUBLICATION)</span></span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>(src <span class="kw">in</span> author): </span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" AUTHOR ERROR:"</span>,author)<span class="op">;</span>author<span class="op">=</span><span class="st">'NA'</span></span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>            tmp.append(author)</span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'title'</span>):</span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'description'</span>):</span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>           tmp.append(string_cleaner(article[key]))</span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'content'</span>):</span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>            tmp.append(string_cleaner(article[key]))</span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(key<span class="op">==</span><span class="st">'publishedAt'</span>):</span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>            <span class="co">#DEFINE DATA PATERN FOR RE TO CHECK  .* --&gt; wildcard</span></span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>            ref <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">'.*-.*-.*T.*:.*:.*Z'</span>)</span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>            date<span class="op">=</span>article[key]</span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>(<span class="kw">not</span> ref.match(date)):</span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">" DATE ERROR:"</span>,date)<span class="op">;</span> date<span class="op">=</span><span class="st">"NA"</span></span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>            tmp.append(date)</span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>    cleaned_data.append(tmp)</span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>    index<span class="op">+=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(cleaned_data, columns<span class="op">=</span> [<span class="st">'source'</span>, <span class="st">'author'</span>, <span class="st">'title'</span>, <span class="st">'description'</span>, <span class="st">'url'</span>, <span class="st">'content'</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_newest <span class="op">=</span> df[[<span class="st">'title'</span>, <span class="st">'description'</span>]]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df_newest.to_csv(<span class="st">'cleanedpeaky.csv'</span>, index<span class="op">=</span><span class="va">False</span>) <span class="co">#,index_label=['title','src','author','date','description'])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Cleaned to a Word Cloud</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df -&gt; list-&gt; string</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>loveislandtitle <span class="op">=</span> df_new[<span class="st">'title'</span>].tolist()</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>loveislanddesc <span class="op">=</span> df_new[<span class="st">'description'</span>].tolist()</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>loveislandtitle.append(loveislanddesc)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>loveislandtitle <span class="op">=</span> <span class="st">' '</span>.join([<span class="bu">str</span>(elem) <span class="cf">for</span> elem <span class="kw">in</span> loveislandtitle])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MODIFIED FROM </span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://towardsdatascience.com/simple-wordcloud-in-python-2ae54a9f58e5</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_word_cloud(my_text):</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exit()</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import package</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define a function to plot word cloud</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_cloud(wordcloud):</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set figure size</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">30</span>))</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display image</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        plt.imshow(wordcloud) </span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No axis details</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate word cloud</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        width <span class="op">=</span> <span class="dv">3000</span>,</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        height <span class="op">=</span> <span class="dv">2000</span>, </span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        background_color<span class="op">=</span><span class="st">'salmon'</span>, </span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>        colormap<span class="op">=</span><span class="st">'Pastel1'</span>, </span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>        collocations<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>        stopwords <span class="op">=</span> STOPWORDS).generate(my_text)</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    plot_cloud(wordcloud)</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>text<span class="op">=</span> loveislandtitle</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>generate_word_cloud(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df -&gt; list-&gt; string</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>afrobeatstitle <span class="op">=</span> df_newer[<span class="st">'title'</span>].tolist()</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>afrobeatsdesc <span class="op">=</span> df_newer[<span class="st">'description'</span>].tolist()</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>afrobeatstitle.append(afrobeatsdesc)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>afrobeatstitle <span class="op">=</span> <span class="st">' '</span>.join([<span class="bu">str</span>(elem) <span class="cf">for</span> elem <span class="kw">in</span> afrobeatstitle])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MODIFIED FROM </span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://towardsdatascience.com/simple-wordcloud-in-python-2ae54a9f58e5</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_word_cloud(my_text):</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exit()</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import package</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define a function to plot word cloud</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_cloud(wordcloud):</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set figure size</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">30</span>))</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display image</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        plt.imshow(wordcloud) </span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No axis details</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate word cloud</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>        width <span class="op">=</span> <span class="dv">3000</span>,</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        height <span class="op">=</span> <span class="dv">2000</span>, </span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        background_color<span class="op">=</span><span class="st">'salmon'</span>, </span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        colormap<span class="op">=</span><span class="st">'Pastel1'</span>, </span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>        collocations<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>        stopwords <span class="op">=</span> STOPWORDS).generate(my_text)</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    plot_cloud(wordcloud)</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>text<span class="op">=</span> afrobeatstitle</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>generate_word_cloud(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df -&gt; list-&gt; string</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>peakyblinderstitle <span class="op">=</span> df_newest[<span class="st">'title'</span>].tolist()</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>peakyblindersdesc <span class="op">=</span> df_newest[<span class="st">'description'</span>].tolist()</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>peakyblinderstitle.append(peakyblindersdesc)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>peakyblinderstitle <span class="op">=</span> <span class="st">' '</span>.join([<span class="bu">str</span>(elem) <span class="cf">for</span> elem <span class="kw">in</span> peakyblinderstitle])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MODIFIED FROM </span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://towardsdatascience.com/simple-wordcloud-in-python-2ae54a9f58e5</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_word_cloud(my_text):</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exit()</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import package</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define a function to plot word cloud</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_cloud(wordcloud):</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set figure size</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">30</span>))</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display image</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        plt.imshow(wordcloud) </span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No axis details</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)<span class="op">;</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate word cloud</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        width <span class="op">=</span> <span class="dv">3000</span>,</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>        height <span class="op">=</span> <span class="dv">2000</span>, </span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        background_color<span class="op">=</span><span class="st">'salmon'</span>, </span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>        colormap<span class="op">=</span><span class="st">'Pastel1'</span>, </span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>        collocations<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>        stopwords <span class="op">=</span> STOPWORDS).generate(my_text)</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    plot_cloud(wordcloud)</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>text<span class="op">=</span> peakyblinderstitle</span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>generate_word_cloud(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
