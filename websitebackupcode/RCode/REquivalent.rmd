@@ -35,7 +35,7 @@ apple_Tibble<- na.omit(apple_Tibble)
 #print(colSums(is.na(apple_Tibble))) #check missing values
 dim(apple_Tibble)
 head(apple_Tibble)
-write.csv(apple_Tibble, "apple_R.csv")
+#write.csv(apple_Tibble, "apple_R.csv")
 ```
 
 Spotify Artists
@@ -57,7 +57,7 @@ spotify_Tibble <- spotify_Tibble %>%
 
 head(spotify_Tibble)
 dim(spotify_Tibble)
-write.csv(spotify_Tibble, "spotify_R.csv")
+#write.csv(spotify_Tibble, "spotify_R.csv")
 
 ```
 
@@ -82,8 +82,27 @@ netflix_Tibble <- netflix_Tibble[-c(1, 2), ]
 #print(sum(is.na(netflix_Tibble))) for missing values
 dim(netflix_Tibble)
 head(netflix_Tibble)
-write.csv(netflix_Tibble, "netflix_R.csv")
+#write.csv(netflix_Tibble, "netflix_R.csv")
 
 ```
 
+Self- Reported Happiness
 
+```{r}
+setwd("C:/Users/Amand/OneDrive/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")
+happy_Dfr <- read_csv("gdp-vs-happiness.csv")
+
+happy_Tibble <- as_tibble(happy_Dfr)
+happy_Tibble<- happy_Tibble[happy_Tibble$"Year" == 2022,]
+
+happy_Tibble <- happy_Tibble %>%
+  select(c("Entity", "Code", "Cantril ladder score"))
+
+colnames(happy_Tibble) <- c("Entity", "Code", "Score")
+
+#print(sum(is.na(happy_Tibble))) for missing values
+dim(happy_Tibble)
+head(happy_Tibble)
+#write.csv(happy_Tibble, "happy_R.csv")
+
+```

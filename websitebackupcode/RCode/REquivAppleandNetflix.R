@@ -20,6 +20,7 @@ colnames(apple_Tibble) <- c("Chart Position", "Artist and Title", "Position Dura
 apple_Tibble$"(x?)" <- gsub("[^0-9]", "", apple_Tibble$"(x?)")
 
 apple_Tibble<- na.omit(apple_Tibble)
+#write.csv(apple_Tibble, "apple_R.csv")
 
 #-----------------------------------------------------------------------
 
@@ -56,6 +57,23 @@ dim(netflix_Tibble)
 head(netflix_Tibble)
 #write.csv(netflix_Tibble, "netflix_R.csv")
 
+#-------------------------------------------------------------------------
+
+setwd("C:/Users/Amand/OneDrive/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")
+happy_Dfr <- read_csv("gdp-vs-happiness.csv")
+
+happy_Tibble <- as_tibble(happy_Dfr)
+happy_Tibble<- happy_Tibble[happy_Tibble$"Year" == 2022,]
+
+happy_Tibble <- happy_Tibble %>%
+  select(c("Entity", "Code", "Cantril ladder score"))
+
+colnames(happy_Tibble) <- c("Entity", "Code", "Score")
+
+#print(sum(is.na(happy_Tibble))) for missing values
+dim(happy_Tibble)
+head(happy_Tibble)
+#write.csv(happy_Tibble, "happy_R.csv")
 
 #------------------------SPOTIFY CONSTRUCTION-----------------------------
 
@@ -147,4 +165,4 @@ TS_Matrix<- as.matrix(Taylor_Swift_A)
 Spotify1 <-rbind(DC_Matrix,TM_Matrix, Drake_Matrix, OR_Matrix, TS_Matrix)
 Spotify<- as.data.frame(Spotify1)
 head(Spotify)
-write.csv(Spotify, "Spotify.csv")
+#write.csv(Spotify, "Spotify.csv")
