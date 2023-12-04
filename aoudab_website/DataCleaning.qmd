@@ -1,0 +1,4 @@
+
+
+![Cleaning Apple Dataset](./images/appleRcleaned.png)
+![Cleaned Apple Dataset](./images/cleanedApple.png)
