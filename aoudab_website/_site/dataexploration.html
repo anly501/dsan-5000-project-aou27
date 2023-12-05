@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>dataexploration</title>
+<title>Data Exploration</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataexploration.html">Data Exploration</a></li><li class="breadcrumb-item"><a href="./dataexploration.html">dataexploration.html</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataexploration.html">Data Exploration</a></li><li class="breadcrumb-item"><a href="./dataexploration.html">Data Exploration</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -179,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">introduction.html</span></a>
+ <span class="menu-text">Introduction: The Effect of Geographical Awareness Dispersion Through Technology on American Pop Culture</span></a>
   </div>
 </li>
       </ul>
@@ -196,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datagathering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">datagathering.html</span></a>
+ <span class="menu-text">Data Gathering</span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DataCleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DataCleaning.html</span></a>
+ <span class="menu-text">Data Cleaning</span></a>
   </div>
 </li>
       </ul>
@@ -230,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataexploration.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">dataexploration.html</span></a>
+ <span class="menu-text">Data Exploration</span></a>
   </div>
 </li>
       </ul>
@@ -247,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./naivebayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">naivebayes.html</span></a>
+ <span class="menu-text">Naive Bayes</span></a>
   </div>
 </li>
       </ul>
@@ -355,15 +389,226 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-summary" id="toc-data-summary" class="nav-link active" data-scroll-target="#data-summary">Data Summary</a>
+  <ul class="collapse">
+  <li><a href="#data-understanding" id="toc-data-understanding" class="nav-link" data-scroll-target="#data-understanding">Data Understanding</a></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive Statistics</a>
+  <ul class="collapse">
+  <li><a href="#apple" id="toc-apple" class="nav-link" data-scroll-target="#apple">Apple:</a></li>
+  <li><a href="#netflix" id="toc-netflix" class="nav-link" data-scroll-target="#netflix">Netflix:</a></li>
+  <li><a href="#news-api" id="toc-news-api" class="nav-link" data-scroll-target="#news-api">News API:</a></li>
+  </ul></li>
+  <li><a href="#data-visualizations" id="toc-data-visualizations" class="nav-link" data-scroll-target="#data-visualizations">Data Visualizations</a></li>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation Analysis</a>
+  <ul class="collapse">
+  <li><a href="#apple-1" id="toc-apple-1" class="nav-link" data-scroll-target="#apple-1">Apple:</a></li>
+  <li><a href="#netflix-1" id="toc-netflix-1" class="nav-link" data-scroll-target="#netflix-1">Netflix:</a></li>
+  <li><a href="#news-api-1" id="toc-news-api-1" class="nav-link" data-scroll-target="#news-api-1">News API:</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-generation" id="toc-hypothesis-generation" class="nav-link" data-scroll-target="#hypothesis-generation">Hypothesis Generation</a>
+  <ul class="collapse">
+  <li><a href="#refined-hypotheis-and-questions" id="toc-refined-hypotheis-and-questions" class="nav-link" data-scroll-target="#refined-hypotheis-and-questions">Refined Hypotheis and Questions:</a></li>
+  </ul></li>
+  <li><a href="#data-grouping-and-segmentation" id="toc-data-grouping-and-segmentation" class="nav-link" data-scroll-target="#data-grouping-and-segmentation">Data Grouping and Segmentation</a></li>
+  <li><a href="#identifying-outliers" id="toc-identifying-outliers" class="nav-link" data-scroll-target="#identifying-outliers">Identifying Outliers</a></li>
+  <li><a href="#methods-and-findings" id="toc-methods-and-findings" class="nav-link" data-scroll-target="#methods-and-findings">Methods and Findings</a></li>
+  <li><a href="#tools-and-software" id="toc-tools-and-software" class="nav-link" data-scroll-target="#tools-and-software">Tools and Software</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Exploration</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="data-summary" class="level1">
+<h1>Data Summary</h1>
+<section id="data-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="data-understanding">Data Understanding</h2>
+<p>Begin by thoroughly understanding the dataset and the problem you are trying to solve. Familiarize yourself with the characteristics of each feature, including their data types (numerical, categorical), potential relationships, and relevance to the project’s objectives.</p>
+<p>My collected data is meant to display major representative sources of American pop culture. This currently includes headlines from newpapers, top music songs internationally, and the most liked Netflix shows from the past year. As these sources are known to reflect what the general population is interested in, these datasets that seemingly represent America’s favored pasttimes, also present current wave of cultural influence in America. Of these influences, I aim to see how certain streaming services are most influential on the colloquialisms of America.</p>
+</section>
+<section id="descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h2>
+<p>Calculate and report basic summary statistics such as mean, median, mode, standard deviation, and variance for numerical variables. For categorical variables, provide frequency distributions and bar charts to visualize data distribution.</p>
+<section id="apple" class="level3">
+<h3 class="anchored" data-anchor-id="apple">Apple:</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf.describe())</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>newAppledf <span class="op">=</span> appledf.drop([<span class="st">"Artist and Title"</span>, <span class="st">"Country"</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>newAppledf <span class="op">=</span> newAppledf.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(newAppledf.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/cleanedAppleSummary.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Apple Analysis Summary Statistics</figcaption>
+</figure>
+</div>
+</section>
+<section id="netflix" class="level3">
+<h3 class="anchored" data-anchor-id="netflix">Netflix:</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(netflixdf.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/netflixsummarypic.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Netflix Summary Statistics</figcaption>
+</figure>
+</div>
+</section>
+<section id="news-api" class="level3">
+<h3 class="anchored" data-anchor-id="news-api">News API:</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_new.describe())</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_newer.describe())</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_newest.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="data-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualizations">Data Visualizations</h2>
+<p>Create visualizations such as histograms, box plots, scatter plots, and heatmaps to explore the data’s distribution, relationships between variables, and potential patterns or trends. Visualizations can make complex data more interpretable.</p>
+</section>
+<section id="correlation-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h2>
+<p>Examine the correlations between variables using correlation matrices, heat-maps, or scatter plots. Identify which variables are positively, negatively, or not correlated, which can guide further analysis.</p>
+<section id="apple-1" class="level3">
+<h3 class="anchored" data-anchor-id="apple-1">Apple:</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appledf.corr())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="netflix-1" class="level3">
+<h3 class="anchored" data-anchor-id="netflix-1">Netflix:</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(netflixdf.corr())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="news-api-1" class="level3">
+<h3 class="anchored" data-anchor-id="news-api-1">News API:</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_new.corr())</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_newer.corr())</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_newest.corr())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="hypothesis-generation" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-generation">Hypothesis Generation</h2>
+<section id="refined-hypotheis-and-questions" class="level3">
+<h3 class="anchored" data-anchor-id="refined-hypotheis-and-questions">Refined Hypotheis and Questions:</h3>
+<ul>
+<li>Examples of American pop culture colloquialisms? OR Example of adopted pop culture colloquialisms?</li>
+<li>What regions in the United States have more of an effect on shared national colloquialisms?</li>
+<li>What regions globally have more of an effect on shared national colloquialisms (limited to seven continents)?</li>
+<li>Is there a specific genre that is more influential on imported jargon?</li>
+<li>Is there a specific region who is more impressionable to imported jargon?</li>
+<li>Based on the data collected, would media or music streaming services be more influential on imported jargon?</li>
+<li>Is national language relation to english influential on how adaptable the terms are?</li>
+<li>Does positive or negative content have more of an effect on adapted jargon?</li>
+<li>Practical applications for encouraging international colloquialisms dispersal?</li>
+<li>How can these applications adapt to the growth of international colloquialisms in America?</li>
+</ul>
+<p>Hypothesis: I believe the rise of international content being consumed through streaming platforms and the rise in the incorporation of internationally- influenced colloquialisms in America will yield a positive correlation.</p>
+</section>
+</section>
+<section id="data-grouping-and-segmentation" class="level2">
+<h2 class="anchored" data-anchor-id="data-grouping-and-segmentation">Data Grouping and Segmentation</h2>
+<p>If applicable, group or segment the data based on relevant criteria to uncover insights within specific subgroups.</p>
+</section>
+<section id="identifying-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-outliers">Identifying Outliers</h2>
+<p>Detect and investigate outliers that may indicate data quality issues or reveal interesting anomalies in the dataset.</p>
+</section>
+<section id="methods-and-findings" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-findings">Methods and Findings</h2>
+<p>Summarize the key findings, insights, and patterns discovered during the EDA phase. Present these findings in a clear and organized manner, using textual narration, tables, charts, and narrative descriptions.</p>
+</section>
+<section id="tools-and-software" class="level2">
+<h2 class="anchored" data-anchor-id="tools-and-software">Tools and Software</h2>
+<p>I will be primarily using Python for exploratory data analysis. This is due to the simplicity of the language making it easier for viewers to follow along with my data manipulation and the complexity of complementary sources, such as its libraries and frameworks. The libraries I am using include Pandas, Matplotlib, Seaborn, Numpy, scikit- learn, and BernoulliNB. While I am using Pandas to sort and manipulate my data, I will be using Matplotlib and Seaborn to visualize any relations I would like to highlight a few of the many possibly influential streaming platform factors on American colloquialism. I will be using Numpy to produce statistical information of my datasets that support my stance and visualizations. In addition to utilizing scikit- learn for producing general algorithms, I will implement BernoulliNB to generate my Naive Bayes algortihm.</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -32,7 +32,7 @@ website:
           - DataCleaning.qmd
       - section: "Data Exploration"
         contents:
-          - dataexploration.qmd
+          - dataexploration.ipynb
       - section: "Naive Bayes"
         contents: 
           - naivebayes.qmd

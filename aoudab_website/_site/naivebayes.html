@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./naivebayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./naivebayes.html">naivebayes.html</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./naivebayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./naivebayes.html">Naive Bayes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">introduction.html</span></a>
+ <span class="menu-text">Introduction: The Effect of Geographical Awareness Dispersion Through Technology on American Pop Culture</span></a>
   </div>
 </li>
       </ul>
@@ -196,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datagathering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">datagathering.html</span></a>
+ <span class="menu-text">Data Gathering</span></a>
   </div>
 </li>
       </ul>
@@ -228,11 +228,8 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dataexploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">dataexploration.html</span></a>
-  </div>
-</li>
+ <span class="menu-text">dataexploration.qmd</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -247,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./naivebayes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">naivebayes.html</span></a>
+ <span class="menu-text">Naive Bayes</span></a>
   </div>
 </li>
       </ul>
@@ -355,15 +352,49 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link active" data-scroll-target="#naive-bayes">Naive Bayes</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-naive-bayes" id="toc-introduction-to-naive-bayes" class="nav-link" data-scroll-target="#introduction-to-naive-bayes">Introduction to Naive Bayes</a></li>
+  <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data Prep</a></li>
+  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature Selection</a></li>
+  <li><a href="#results--record-data" id="toc-results--record-data" class="nav-link" data-scroll-target="#results--record-data">Results- Record Data</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
+<section id="naive-bayes" class="level1">
+<h1>Naive Bayes</h1>
+<section id="introduction-to-naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-naive-bayes">Introduction to Naive Bayes</h2>
+<p>Provide an brief overview of Naive Bayes classification and how it works. Don’t go into too much detail, assume the audience is familiar with math and statistics but is not familiar with Naive Bayes. Explain the probabilistic nature of Naive Bayes and its Bayes’ theorem foundation. Clearly define the objectives of what you are trying to do. Explain what you aim to achieve through Naive Bayes classification. Describe different variants of Naive Bayes, such as Gaussian, Multinomial, and Bernoulli Naive Bayes, and explain when to use each</p>
+<p>Bayes Theorem is a mathematical theorem used for predicting a future outcome depending on a collected piece of evidence. More specifically, this theorem calculates “conditional probabilities”, which depicts the probability of an outcome based on a prior condition/ event. The formula for the theorem is: $[P(A|B) = (P(B|A) (P(A))) / P(B) ] In this formula, to predict the probability of event A given event B, we multiply the probability of event B when event A occurs by the probability of event A. We then divide the product by the total probability of event B. With that in mind, Naive Bayes is a… There are many variants under the umbrella of Naive Bayes. Included in this bunch are Complement Naive Bayes, Out- of- core Naive Bayes model- fitting, Bernoulli Naive Bayes, Multinomial Naive Bayes, and Gaussian Naive Bayes. When speaking of Gaussian Naive Bayes… Whereas, Bernoulli Naive Bayes… Likewise, Multinomial Naive Bayes… (Week 7 lecture)</p>
+</section>
+<section id="data-prep" class="level2">
+<h2 class="anchored" data-anchor-id="data-prep">Data Prep</h2>
+<p>To prepare for Naive Bayes classification, I split my dataset into training and testing datasets. I do this by .. Once partitioned, there should be a training set– which consists of the training set as well as a validation set, to do a minor evaluation on what has been trained– and a test set. The purpose of the partitions of different sets is so I can inform my model of what categories to look for when actually classifying my collected datasets.</p>
+</section>
+<section id="feature-selection" class="level2">
+<h2 class="anchored" data-anchor-id="feature-selection">Feature Selection</h2>
+<p>You need to use either R or Python to code Naive Bayes (NB) as a classification model for your data, we will use NB as a wrapper for feature selection. While not required, if you want to take it further, you can try this in both R and Python.</p>
+<p>Objective: The primary objective of the Feature Selection component in this project is to identify and choose the most relevant and informative features (variables or attributes) from the dataset, for the given task. Effective feature selection can improve the model’s performance, reduce overfitting, and enhance the interpretability of the results.</p>
+<p>Instructions: Generalize and apply the code in the lab assignment and lab-demonstration called “Feature selection with text data” to the text and record data you have collected for your project. This code demonstrates feature selection for a text classification task, so map the task onto your projects dataset.</p>
+</section>
+<section id="results--record-data" class="level2">
+<h2 class="anchored" data-anchor-id="results--record-data">Results- Record Data</h2>
+<p>Using your optimal feature set from the previous section, fit a final “optimal” NB model for your Record data. Report and comment on the findings. It is required that you create code, appropriate visualizations, result summaries, confusion matrices, etc Describe how the trained model is tested on the testing dataset. Discuss the evaluation metrics used to assess the performance of the Naive Bayes classifier (e.g., accuracy, precision, recall, F1-score). Discuss the concepts of overfitting and under-fitting and whether your model is doing it. Discuss the model’s performance in terms of accuracy and other relevant metrics. Describe how the project findings will be documented and reported, including the format of reports or presentations. e.g.&nbsp;what is the output that you generate. What does the output mean? What does it tell you about your data? Does your model do a good job of predicting your test data? Include and discuss relevant visualizations, results, the confusion matrices, etc . Create and include a minimum of three visualizations for each case (text and record classification). Write a conclusion paragraph interpreting the results. Note, this is not the same as a write-up of technical methodological details.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
