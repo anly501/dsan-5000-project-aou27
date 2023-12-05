@@ -2,18 +2,17 @@
 title: Data Gathering
 ---
 
-## Data Sources
-My original data sources include datasets from kworb.net and dataworld.com that document rankings as of October 12, 2023.
-![Original Apple Music Dataset](./images/originalAppledata.png)
-![Original Netflix Dataset](./images/originalNetflixdata.png)
-![Original Spotify Dataset](./images/originalSpotify.png)
+The data I gathered to examine how the sentiments of current music and media coincide with the general happiness levels of different countries consists of text data, qualitative record data, and quantitative record data. The data comes from five different main sources, two of which are directly from website API (Application Programming Interface) sources. As an overview of the data sources:
 
+- Apple Music International Rankings: Displays the Apple Music rankings for the top international songs in October 2023.
+- Spotify: Contains variables that give a summary of different aspects of an artist’s various songs and albums over the years
+- Top Netflix TV Shows in 2022: Consists of the top television shows worldwide on Netflix’s streaming platform.
+- GDP vs. Happiness: This data explores the various levels of happiness and the Gross Domestic Product (GDP) per capita spanning different years for each country.
+- Wikipedia: Contains text data from specific WIkipedia topic pages.
 
+### Apple Music
 
+One of my goals for this project was to get a large dataset representing the current top rated songs in various countries. After searching a bit, I was able to discover [Kworb’s](https://kworb.net/ww/archive/20231009.html) website filled with real- time data on how Apple Music’s international listeners are ranking songs. Below is a picture of the raw data, which shows the artist, their song, their song’s ranking in different countries, the duration of their ranking position, and the amounts of points accumulated that verify their ranking position.
 
-## Data Sites
-<iframe src="https://kworb.net/apple_songs/index_full.html" width="800" height="600"></iframe>
+![Apple Music International Rankings Raw Dataset](./images/appleRawData.png)
 
-<iframe src="https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/" width="800" height="600"></iframe>
-
-<iframe src="https://developer.spotify.com/documentation/web-api/concepts/api-calls" width="800" height="600"></iframe>

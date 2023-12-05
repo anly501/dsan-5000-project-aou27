@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction: The Effect of Geographical Awareness Dispersion Through Technology on American Pop Culture</span></a>
+ <span class="menu-text">Mood, Music, and Media</span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DataCleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DataCleaning.html</span></a>
+ <span class="menu-text">Data Cleaning</span></a>
   </div>
 </li>
       </ul>
@@ -228,8 +228,11 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">dataexploration.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./dataexploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Exploration</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -356,8 +359,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link active" data-scroll-target="#data-sources">Data Sources</a></li>
-  <li><a href="#data-sites" id="toc-data-sites" class="nav-link" data-scroll-target="#data-sites">Data Sites</a></li>
+  <li><a href="#apple-music" id="toc-apple-music" class="nav-link active" data-scroll-target="#apple-music">Apple Music</a></li>
   </ul>
 </nav>
     </div>
@@ -381,18 +383,21 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
-<p>My original data sources include datasets from kworb.net and dataworld.com that document rankings as of October 12, 2023. <img src="./images/originalAppledata.png" class="img-fluid" alt="Original Apple Music Dataset"> <img src="./images/originalNetflixdata.png" class="img-fluid" alt="Original Netflix Dataset"> <img src="./images/originalSpotify.png" class="img-fluid" alt="Original Spotify Dataset"></p>
-</section>
-<section id="data-sites" class="level2">
-<h2 class="anchored" data-anchor-id="data-sites">Data Sites</h2>
-<iframe src="https://kworb.net/apple_songs/index_full.html" width="800" height="600">
-</iframe>
-<iframe src="https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/" width="800" height="600">
-</iframe>
-<iframe src="https://developer.spotify.com/documentation/web-api/concepts/api-calls" width="800" height="600">
-</iframe>
+<p>The data I gathered to examine how the sentiments of current music and media coincide with the general happiness levels of different countries consists of text data, qualitative record data, and quantitative record data. The data comes from five different main sources, two of which are directly from website API (Application Programming Interface) sources. As an overview of the data sources:</p>
+<p>Apple Music International Rankings: Displays the Apple Music rankings for the top international songs in October 2023.</p>
+<p>Spotify: Contains variables that give a summary of different aspects of an artist’s various songs and albums over the years</p>
+<p>Top Netflix TV Shows in 2022: Consists of the top television shows worldwide on Netflix’s streaming platform.</p>
+<p>GDP vs.&nbsp;Happiness: This data explores the various levels of happiness and the Gross Domestic Product (GDP) per capita spanning different years for each country.</p>
+<p>Wikipedia: Contains text data from specific WIkipedia topic pages.</p>
+<section id="apple-music" class="level3">
+<h3 class="anchored" data-anchor-id="apple-music">Apple Music</h3>
+<p>One of my goals for this project was to get a large dataset representing the current top rated songs in various countries. After searching a bit, I was able to discover <a href="https://kworb.net/ww/archive/20231009.html">Kworb’s</a> website filled with real- time data on how Apple Music’s international listeners are ranking songs. Below is a picture of the raw data, which shows the artist, their song, their song’s ranking in different countries, the duration of their ranking position, and the amounts of points accumulated that verify their ranking position.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/appleRawData.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Apple Music International Rankings Raw Dataset</figcaption>
+</figure>
+</div>
 
 
 </section>

@@ -22,12 +22,12 @@ apple_Tibble$"(x?)" <- gsub("[^0-9]", "", apple_Tibble$"(x?)")
 apple_Tibble<- na.omit(apple_Tibble)
 #write.csv(apple_Tibble, "apple_R.csv")
 
-#-----------------------------------------------------------------------
-
 #print(sum(is.na(apple_Tibble))) #check missing values
 dim(apple_Tibble)
 head(apple_Tibble)
 #write.csv(apple_Tibble, "apple_R.csv")
+
+#---------------------------------------------------------------------------
 
 setwd("C:/Users/Amand/OneDrive/Documents/DSAN 5000/website-template/HW1_5000/dsan-5000-project-aou27/websitedata")
 spotify_Dfr <- read_csv("Spotify.csv")
@@ -36,7 +36,7 @@ spotify_Tibble <- as_tibble(spotify_Dfr)
 colnames(spotify_Tibble) <- c("Index", "Artist Name", "Valence", "Danceability", "Energy", "Loudness", "Speechiness", "Acousticness", "Liveness", "Tempo", "Track Name", "Album Name", "Album Release Year")
 
 spotify_Tibble <- spotify_Tibble %>%
-  select(c("Index", "Artist Name", "Valence", "Danceability", "Energy", "Loudness", "Speechiness", "Tempo", "Track Name", "Album Name", "Album Release Year"))
+  select(c("Index", "Artist Name", "Valence", "Danceability", "Energy", "Loudness", "Speechiness", "Acousticness", "Tempo", "Liveness", "Track Name", "Album Name", "Album Release Year"))
 
 head(spotify_Tibble)
 dim(spotify_Tibble)
