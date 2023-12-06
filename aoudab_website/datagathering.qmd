@@ -1,5 +1,6 @@
 ---
 title: Data Gathering
+bibliography: reference.bib
 ---
 
 The data I gathered to examine how the sentiments of current music and media coincide with the general happiness levels of different countries consists of text data, qualitative record data, and quantitative record data. The data comes from five different main sources, two of which are directly from website API (Application Programming Interface) sources. As an overview of the data sources:
@@ -16,3 +17,58 @@ One of my goals for this project was to get a large dataset representing the cur
 
 ![Apple Music International Rankings Raw Dataset](./images/appleRawData.png)
 
+### Spotify API
+
+My Spotify content required authorization to access. At the very bottom of both my .R and .rmd files in my “Rcode” folder under my “websitebackupcode” folder, you will find how I set up my data collection for my Spotify dataset. I first submitted a registering application on [Spotify’s API website](https://developer.spotify.com/documentation/web-api). Once receiving my Client ID key and my Client Secret key, I used the keys to request a Spotify access token. This gave me access to the artist and corresponding song information available in Spotify’s Web API. 
+
+ I wanted to gain insights into the first five artists at the top of the ranking for international songs from Apple Music. So, I requested Spotify information on Doja Cat, Tate McRae, Drake, Olivia Rodrigo, and Taylor Swift. The request yielded information on each song’s name, artist, valence, danceability, energy, loudness, speechiness, acousticness, liveness, tempo, album, and album release year. Which can be found [here](https://medium.com/@boplantinga/what-do-spotifys-audio-features-tell-us-about-this-year-s-eurovision-song-contest-66ad188e112a). As a brief overview:
+
+- Valence: A metric of musical positivity.
+- Danceability
+- Energy: A metric of , loudness, and noise in a song.
+- Loudness: A metric for the loudness; measured in decibels.
+- Speechiness: A metric for the presence of speech- adjacent aspects in a recording.
+- Acousticness: A metric denoting how acoustic the song was.
+- Liveness: A metric concerning the level of an audience presence in the recording.
+- Tempo: A metric of the estimated tempo of each song.
+
+Right below this, is a snapshot of me using my Client ID key and Client Secret key to request API data access.
+
+![Spotify API Requesting and Formation](./images/spotifyDataCollection.png)
+
+### Netflix
+
+One of my other goals for this project was to find data that represents the most watched television shows on a specific streaming platform in the past year. I was able to come across [Statista’s](https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/) arsenal. Statista provided data on a survey done by Flix Patrol, which captured the most watched Netflix television shows internationally as of December 2022. The dataset was modest; only consisting of the television shows in order of ranking and their corresponding points that justify their ranking. As stated on Statista, and clarified [here](https://flixpatrol.com/about/how-it-works/), the points system is designed to be, “always based on the popularity ranking coming directly from the streaming platforms” (@FlixPatrol). The total scores are an accumulation of points that fit this breakdown: 
+
+- 10 points for the #1 television show
+- 9 points for the #2 television show
+.
+.
+.
+- 1 point for the #10 television show
+
+Below this is a picture of the original histogram visual of data provided by Statista, (@Patrol_3_2023).
+
+![Statista's Netflix Raw Data Visualization](./images/statistaNetflix.png)
+
+### GDP vs Self- Reported Life Satisfaction
+
+The anchor connecting my music and media streaming platforms’ data is a dataset that would reflect some sort of emotional status of many different countries. Luckily, I discovered [Our World in Data](https://ourworldindata.org/grapher/gdp-vs-happiness?tab=table), which had a plethora of data reflecting interesting societal topics– including the relationship of subjective personal satisfaction and the origin country’s Gross Domestic Product (GDP) per capita. Our World in Data allowed me to easily download the dataset directly from their website. The dataset contains 3 variables:
+
+- The population for each country at different years up until the end of 2022
+- The GDP per capita in international dollars (a normalized currency they used for comparison); this dataset borrowed statistics from 2017
+- The country average of life satisfaction. The scale used is the Cantril Ladder, which ranges from 0 to 10 (“0” being the lowest rating of life satisfaction and “10” being the highest rating of life satisfaction).
+
+Below this is a visualization of the raw data provided by Our World in Data, which showcases the relationship of the countries’ GDP per capita and self- reported life satisfaction levels(@OurWorldinData_2022).
+
+![Our World in Data's Raw Data Visualization](./images/gdp-vs-happiness.png)
+
+### Wikipedia API
+
+My one other dataset source generated from an API call is the datasets of my Wikipedia API. The Python language has a wikipedia library that makes it easy for programmers to access any available wikipedia page content. For setting up my datasets from the wikipedia library, I imported the library to my workspace. I then requested the wikipedia page for all the television shows in the top five of my previously mentioned “Top TV shows on Netflix worldwide 2022” data. I was interested in using the plots for my analysis, so I only took the “Premise” portions of all of my wikipedia requests. 
+
+ A description and example of the abilities of the wikipedia library for the Python language can be found [here](https://pypi.org/project/wikipedia/). Additionally, My entire data collection process for the Wikipedia API calls can be found in my “pythonApiBackup” folder inside my “websitebackupfolder” in my Github repository. 
+
+Below, is a screenshot of the beginning of my wikipedia API call for the highest ranked show from my “Top TV shows on Netflix worldwide 2022” dataset.
+
+![Wikipedia API Call](./images/wikiAPIcall.png)

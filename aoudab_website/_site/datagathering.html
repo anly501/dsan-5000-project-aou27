@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -298,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./decisiontrees.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">decisiontrees.html</span></a>
+ <span class="menu-text">Decision Trees</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -310,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">regression.html</span></a>
+ <span class="menu-text">Regression</span></a>
   </div>
 </li>
       </ul>
@@ -360,6 +379,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#apple-music" id="toc-apple-music" class="nav-link active" data-scroll-target="#apple-music">Apple Music</a></li>
+  <li><a href="#spotify-api" id="toc-spotify-api" class="nav-link" data-scroll-target="#spotify-api">Spotify API</a></li>
+  <li><a href="#netflix" id="toc-netflix" class="nav-link" data-scroll-target="#netflix">Netflix</a></li>
+  <li><a href="#gdp-vs-self--reported-life-satisfaction" id="toc-gdp-vs-self--reported-life-satisfaction" class="nav-link" data-scroll-target="#gdp-vs-self--reported-life-satisfaction">GDP vs Self- Reported Life Satisfaction</a></li>
+  <li><a href="#wikipedia-api" id="toc-wikipedia-api" class="nav-link" data-scroll-target="#wikipedia-api">Wikipedia API</a></li>
   </ul>
 </nav>
     </div>
@@ -384,11 +407,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>The data I gathered to examine how the sentiments of current music and media coincide with the general happiness levels of different countries consists of text data, qualitative record data, and quantitative record data. The data comes from five different main sources, two of which are directly from website API (Application Programming Interface) sources. As an overview of the data sources:</p>
-<p>Apple Music International Rankings: Displays the Apple Music rankings for the top international songs in October 2023.</p>
-<p>Spotify: Contains variables that give a summary of different aspects of an artist’s various songs and albums over the years</p>
-<p>Top Netflix TV Shows in 2022: Consists of the top television shows worldwide on Netflix’s streaming platform.</p>
-<p>GDP vs.&nbsp;Happiness: This data explores the various levels of happiness and the Gross Domestic Product (GDP) per capita spanning different years for each country.</p>
-<p>Wikipedia: Contains text data from specific WIkipedia topic pages.</p>
+<ul>
+<li>Apple Music International Rankings: Displays the Apple Music rankings for the top international songs in October 2023.</li>
+<li>Spotify: Contains variables that give a summary of different aspects of an artist’s various songs and albums over the years</li>
+<li>Top Netflix TV Shows in 2022: Consists of the top television shows worldwide on Netflix’s streaming platform.</li>
+<li>GDP vs.&nbsp;Happiness: This data explores the various levels of happiness and the Gross Domestic Product (GDP) per capita spanning different years for each country.</li>
+<li>Wikipedia: Contains text data from specific WIkipedia topic pages.</li>
+</ul>
 <section id="apple-music" class="level3">
 <h3 class="anchored" data-anchor-id="apple-music">Apple Music</h3>
 <p>One of my goals for this project was to get a large dataset representing the current top rated songs in various countries. After searching a bit, I was able to discover <a href="https://kworb.net/ww/archive/20231009.html">Kworb’s</a> website filled with real- time data on how Apple Music’s international listeners are ranking songs. Below is a picture of the raw data, which shows the artist, their song, their song’s ranking in different countries, the duration of their ranking position, and the amounts of points accumulated that verify their ranking position.</p>
@@ -398,11 +423,88 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">Apple Music International Rankings Raw Dataset</figcaption>
 </figure>
 </div>
+</section>
+<section id="spotify-api" class="level3">
+<h3 class="anchored" data-anchor-id="spotify-api">Spotify API</h3>
+<p>My Spotify content required authorization to access. At the very bottom of both my .R and .rmd files in my “Rcode” folder under my “websitebackupcode” folder, you will find how I set up my data collection for my Spotify dataset. I first submitted a registering application on <a href="https://developer.spotify.com/documentation/web-api">Spotify’s API website</a>. Once receiving my Client ID key and my Client Secret key, I used the keys to request a Spotify access token. This gave me access to the artist and corresponding song information available in Spotify’s Web API.</p>
+<p>I wanted to gain insights into the first five artists at the top of the ranking for international songs from Apple Music. So, I requested Spotify information on Doja Cat, Tate McRae, Drake, Olivia Rodrigo, and Taylor Swift. The request yielded information on each song’s name, artist, valence, danceability, energy, loudness, speechiness, acousticness, liveness, tempo, album, and album release year. Which can be found <a href="https://medium.com/@boplantinga/what-do-spotifys-audio-features-tell-us-about-this-year-s-eurovision-song-contest-66ad188e112a">here</a>. As a brief overview:</p>
+<ul>
+<li>Valence: A metric of musical positivity.</li>
+<li>Danceability</li>
+<li>Energy: A metric of , loudness, and noise in a song.</li>
+<li>Loudness: A metric for the loudness; measured in decibels.</li>
+<li>Speechiness: A metric for the presence of speech- adjacent aspects in a recording.</li>
+<li>Acousticness: A metric denoting how acoustic the song was.</li>
+<li>Liveness: A metric concerning the level of an audience presence in the recording.</li>
+<li>Tempo: A metric of the estimated tempo of each song.</li>
+</ul>
+<p>Right below this, is a snapshot of me using my Client ID key and Client Secret key to request API data access.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/spotifyDataCollection.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Spotify API Requesting and Formation</figcaption>
+</figure>
+</div>
+</section>
+<section id="netflix" class="level3">
+<h3 class="anchored" data-anchor-id="netflix">Netflix</h3>
+<p>One of my other goals for this project was to find data that represents the most watched television shows on a specific streaming platform in the past year. I was able to come across <a href="https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/">Statista’s</a> arsenal. Statista provided data on a survey done by Flix Patrol, which captured the most watched Netflix television shows internationally as of December 2022. The dataset was modest; only consisting of the television shows in order of ranking and their corresponding points that justify their ranking. As stated on Statista, and clarified <a href="https://flixpatrol.com/about/how-it-works/">here</a>, the points system is designed to be, “always based on the popularity ranking coming directly from the streaming platforms” (<span class="citation" data-cites="FlixPatrol"> (<a href="#ref-FlixPatrol" role="doc-biblioref">n.d.</a>)</span>). The total scores are an accumulation of points that fit this breakdown:</p>
+<ul>
+<li>10 points for the #1 television show</li>
+<li>9 points for the #2 television show . . .</li>
+<li>1 point for the #10 television show</li>
+</ul>
+<p>Below this is a picture of the original histogram visual of data provided by Statista, (<span class="citation" data-cites="Patrol_3_2023">Patrol and 3 (<a href="#ref-Patrol_3_2023" role="doc-biblioref">2023</a>)</span>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/statistaNetflix.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Statista’s Netflix Raw Data Visualization</figcaption>
+</figure>
+</div>
+</section>
+<section id="gdp-vs-self--reported-life-satisfaction" class="level3">
+<h3 class="anchored" data-anchor-id="gdp-vs-self--reported-life-satisfaction">GDP vs Self- Reported Life Satisfaction</h3>
+<p>The anchor connecting my music and media streaming platforms’ data is a dataset that would reflect some sort of emotional status of many different countries. Luckily, I discovered <a href="https://ourworldindata.org/grapher/gdp-vs-happiness?tab=table">Our World in Data</a>, which had a plethora of data reflecting interesting societal topics– including the relationship of subjective personal satisfaction and the origin country’s Gross Domestic Product (GDP) per capita. Our World in Data allowed me to easily download the dataset directly from their website. The dataset contains 3 variables:</p>
+<ul>
+<li>The population for each country at different years up until the end of 2022</li>
+<li>The GDP per capita in international dollars (a normalized currency they used for comparison); this dataset borrowed statistics from 2017</li>
+<li>The country average of life satisfaction. The scale used is the Cantril Ladder, which ranges from 0 to 10 (“0” being the lowest rating of life satisfaction and “10” being the highest rating of life satisfaction).</li>
+</ul>
+<p>Below this is a visualization of the raw data provided by Our World in Data, which showcases the relationship of the countries’ GDP per capita and self- reported life satisfaction levels(<span class="citation" data-cites="OurWorldinData_2022"> (<a href="#ref-OurWorldinData_2022" role="doc-biblioref">2022</a>)</span>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/gdp-vs-happiness.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Our World in Data’s Raw Data Visualization</figcaption>
+</figure>
+</div>
+</section>
+<section id="wikipedia-api" class="level3">
+<h3 class="anchored" data-anchor-id="wikipedia-api">Wikipedia API</h3>
+<p>My one other dataset source generated from an API call is the datasets of my Wikipedia API. The Python language has a wikipedia library that makes it easy for programmers to access any available wikipedia page content. For setting up my datasets from the wikipedia library, I imported the library to my workspace. I then requested the wikipedia page for all the television shows in the top five of my previously mentioned “Top TV shows on Netflix worldwide 2022” data. I was interested in using the plots for my analysis, so I only took the “Premise” portions of all of my wikipedia requests.</p>
+<p>A description and example of the abilities of the wikipedia library for the Python language can be found <a href="https://pypi.org/project/wikipedia/">here</a>. Additionally, My entire data collection process for the Wikipedia API calls can be found in my “pythonApiBackup” folder inside my “websitebackupfolder” in my Github repository.</p>
+<p>Below, is a screenshot of the beginning of my wikipedia API call for the highest ranked show from my “Top TV shows on Netflix worldwide 2022” dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/wikiAPIcall.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Wikipedia API Call</figcaption>
+</figure>
+</div>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-OurWorldinData_2022" class="csl-entry" role="listitem">
+2022. <em>Our World in Data</em>. <a href="https://ourworldindata.org/grapher/gdp-vs-happiness">https://ourworldindata.org/grapher/gdp-vs-happiness</a>.
+</div>
+<div id="ref-FlixPatrol" class="csl-entry" role="listitem">
+———. n.d. <em>FlixPatrol</em>. <a href="https://flixpatrol.com/about/how-it-works/">https://flixpatrol.com/about/how-it-works/</a>.
+</div>
+<div id="ref-Patrol_3_2023" class="csl-entry" role="listitem">
+Patrol, Flix, and Nov 3. 2023. <span>“Netflix: Top TV Shows 2022.”</span> <em>Statista</em>. 2020- 2023 Flix Patrol. <a href="https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/">https://www.statista.com/statistics/1361250/netflix-top-tv-shows-worldwide/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

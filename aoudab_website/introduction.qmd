@@ -12,17 +12,22 @@ Media consumption being tied to emotional state is not a new topic. One study in
 
 Taking a more comprehensive approach to present a complementary notion, a more recent study explores how instrumental considering the emotional state of the consumer is to media recommendation. Winoto and Yang (2010) had seventy- seven college students in the midst of final exams’ season participate in their experiment, where they answered questions revolving around 46 movies and 16 sentiment labels. This study yielded insights such as possessing positive- affect and negative- affect have a significant effect on the rating of romantic- comedy movies. Another takeaway is the observation that user recommendation systems may not be as successful when the said user is, “not in the mood to enjoy a movie” (@WINOTO20106086). Taking into account physical exhaustion levels and general mood, the study demonstrates just a fraction of how specific the external and internal influences can be on increasing the bias which affects media consumption preferences.
  
+### Music
 
+When specifically looking at music and emotions, one study captures an insight that brings light to how a bias in music preference may be perceived. Taylor and Friedman (2014) analyzed 44 college students’ music preferences after causing them to be in a dejected mood. As a result of the study, the researchers came to the conclusion that people in sadder moods may be expected to avoid, “songs that express happiness” (@doi:10.1080/15213269.2013.826589). This study looked directly at the possible trajectory of music tone choice when sadness is induced, further supporting the possibility of a significant relationship between personal sentiment and music and media preferences.
 
+On the other side of the general analyses presented, one study examined how to detect general moods present in music. Lu, et al. (2005) take features that convey a music piece’s energy, contrast, and rhythm to track the moods in a song. One significant result is the detection method achieving an average accuracy level of 86 percent. When considering the effect of situational emotion arousal, extensive methods such as the one examined here provides researchers with more flexible recommendations.
 
-### Questions:
-- Examples of American pop culture colloquialisms? OR Example of adopted pop culture colloquialisms?
-- What regions in the United States have more of an effect on shared national colloquialisms?
-- What regions globally have more of an effect on shared national colloquialisms (limited to seven continents)?
-- Is there a specific age group who is more impressionable to imported jargon?
-- Is there a specific region who is more impressionable to imported jargon?
-- Largest language dispersion channel (like Netflix, Hulu, Amazon Prime, Apple TV)?
-- Is genre influential on how adaptable the terms are?
-- Does positive or negative content have more of an effect on adapted jargon?
-- Practical applications for encouraging international colloquialisms dispersal?
-- How can these applications adapt to the growth of international colloquialisms in America?
+The phenomena of streaming service preferences being linked to psychological standing holds several implications for readers. One being businesses need to progress in their depth of understanding the multiple facets of consumerism. With more and more platforms competing for customers– such as Spotify vs. Apple Music vs. Pandora and Netflix vs. Hulu vs. Peacock– persistent efforts to create gradually more adaptable recommendation systems is worth exploring.
+
+Another implication being the benefits of consumers becoming more educated on how the entertainment they consume may affect them. As seen in the referenced works, there are a diverse array of effects on various moods to expect from different genres of media and their corresponding sentiments. It may hold significance for many consumers to educate themselves on the directions to take in the entertainment realm to enhance their well- being by encouraging an environment of consumption more conducive to their mental state.
+
+## Project
+
+As an attempt to build on these efforts, my project utilizes algorithms such as Naive Bayes Classifier and Decision Trees to examine what conclusions can be drawn from the level of international subjective satisfaction and worldwide media preferences. In my project, I plan to address questions such as:
+
+- Is there a strong preference for negative content worldwide?
+- Is there a strong preference for positive or neutral content worldwide?
+- What songs are more likely to be preferred by which countries?
+- 
+
