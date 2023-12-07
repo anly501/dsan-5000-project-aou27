@@ -1,6 +1,0 @@
----
-title: "Regression"
-format:
-  html:
-    code-fold: true
----

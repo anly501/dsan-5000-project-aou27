@@ -1,4 +1,8 @@
 ---
 title: "Amanda Ofure Udabor's Website
         GUID: au195"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
 ---

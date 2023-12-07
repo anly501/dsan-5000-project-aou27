@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -264,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./clustering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clustering.html</span></a>
+ <span class="menu-text">Clustering</span></a>
   </div>
 </li>
       </ul>
@@ -281,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dimensionalityreduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">dimensionalityreduction.html</span></a>
+ <span class="menu-text">Dimensionality Reduction</span></a>
   </div>
 </li>
       </ul>
@@ -303,12 +337,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Classification</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Regression</span></a>
   </div>
@@ -318,29 +346,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
- <span class="menu-text">Asosciation Rule Mining</span></a>
+ <span class="menu-text">Conclusions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./arm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">arm.html</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="true">
- <span class="menu-text">Conclusions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
@@ -377,6 +388,636 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="cell" data-execution_count="71">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectKBest</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> chi2</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="72">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>happydf <span class="op">=</span> pd.read_csv(<span class="st">"../websitedata/happy_py.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> pd.read_csv(<span class="st">"../websitedata/apple_py.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="73">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>happydf <span class="op">=</span> happydf.sort_values(by<span class="op">=</span><span class="st">"Score"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>happydf <span class="op">=</span> happydf.drop(columns<span class="op">=</span>{<span class="st">"Unnamed: 0"</span>, <span class="st">"Code"</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>happy20 <span class="op">=</span> pd.concat([happydf.head(<span class="dv">20</span>), happydf.tail(<span class="dv">20</span>)])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>happy20 <span class="op">=</span> happy20.rename(columns<span class="op">=</span>{<span class="st">"Entity"</span>: <span class="st">"CountryHappy"</span>})</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>happy20 <span class="op">=</span> happy20.sort_values(by<span class="op">=</span>[<span class="st">"CountryHappy"</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>happy20 <span class="op">=</span> happy20.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(happy20)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happy20.head)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;bound method NDFrame.head of                     CountryHappy   Score         GDP
+0                    Afghanistan  1.8590       363.7
+1                      Australia  7.0946   64,491.40
+2                        Austria  7.0973   52,131.40
+3                     Bangladesh  4.2821    2,688.30
+4                        Belgium  6.8591   49,582.80
+5                       Botswana  3.4353    7,737.70
+6                         Canada  6.9607   54,966.50
+7                        Comoros  3.5452    1,484.90
+8                        Czechia  6.8452   27,638.40
+9   Democratic Republic of Congo  3.2072       586.5
+10                       Denmark  7.5864   66,983.10
+11                         Egypt  4.1705    4,295.40
+12                      Ethiopia  4.0906    1,027.60
+13                       Finland  7.8042   50,536.60
+14                        Gambia  4.2794         840
+15                       Germany  6.8918   48,432.50
+16                       Iceland  7.5296   72,903.00
+17                         India  4.0358    2,388.60
+18                       Ireland  6.9108  104,038.90
+19                        Israel  7.4729   54,659.80
+20                        Jordan  4.1198    4,204.50
+21                       Lebanon  2.3922    4,136.10
+22                       Liberia  4.0423       754.5
+23                     Lithuania  6.7630   24,826.80
+24                    Luxembourg  7.2279  126,426.10
+25                    Madagascar  4.0191         505
+26                        Malawi  3.4952       645.2
+27                          Mali  4.1978       833.3
+28                   Netherlands  7.4030   55,985.40
+29                   New Zealand  7.1229   48,249.30
+30                        Norway  7.3155  106,148.80
+31                  Sierra Leone  3.1376       461.4
+32                        Sweden  7.3952   55,873.20
+33                   Switzerland  7.2401   92,101.50
+34                      Tanzania  3.6938    1,192.40
+35                          Togo  4.1374       918.4
+36                United Kingdom  6.7956   45,850.40
+37                 United States  6.8937   76,398.60
+38                        Zambia  3.9822    1,487.90
+39                      Zimbabwe  3.2035    1,267.00&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="74">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>country_mapping <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"US"</span>: <span class="st">"United States"</span>,<span class="st">'UK'</span>: <span class="st">'United Kingdom'</span>,<span class="st">'JP'</span>: <span class="st">'Japan'</span>,<span class="st">'DE'</span>: <span class="st">'Germany'</span>,<span class="st">'AU'</span>: <span class="st">'Australia'</span>,<span class="st">'CA'</span>: <span class="st">'Canada'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'FR'</span>: <span class="st">'France'</span>,<span class="st">'IT'</span>: <span class="st">'Italy'</span>,<span class="st">'KR'</span>: <span class="st">'South Korea'</span>,<span class="st">'MX'</span>: <span class="st">'Mexico'</span>,<span class="st">'TH'</span>: <span class="st">'Thailand'</span>,<span class="st">'BE'</span>: <span class="st">'Belgium'</span>,<span class="st">'BR'</span>: <span class="st">'Brazil'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CH'</span>: <span class="st">'Switzerland'</span>,<span class="st">'CN'</span>: <span class="st">'China'</span>,<span class="st">'CO'</span>: <span class="st">'Colombia'</span>,<span class="st">'ES'</span>: <span class="st">'Spain'</span>,<span class="st">'HK'</span>: <span class="st">'Hong Kong'</span>,<span class="st">'ID'</span>: <span class="st">'Indonesia'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IE'</span>: <span class="st">'Ireland'</span>,<span class="st">'IN'</span>: <span class="st">'India'</span>,<span class="st">'NL'</span>: <span class="st">'Netherlands'</span>,<span class="st">'NZ'</span>: <span class="st">'New Zealand'</span>,<span class="st">'TR'</span>: <span class="st">'Turkey'</span>,<span class="st">'TW'</span>: <span class="st">'Taiwan'</span>,<span class="st">'ZA'</span>: <span class="st">'South Africa'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'AE'</span>: <span class="st">'United Arab Emirates'</span>,<span class="st">'AR'</span>: <span class="st">'Argentina'</span>,<span class="st">'AT'</span>: <span class="st">'Austria'</span>,<span class="st">'CL'</span>: <span class="st">'Chile'</span>,<span class="st">'CZ'</span>: <span class="st">'Czech Republic'</span>,<span class="st">'DK'</span>: <span class="st">'Denmark'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'EE'</span>: <span class="st">'Estonia'</span>,<span class="st">'EG'</span>: <span class="st">'Egypt'</span>,<span class="st">'FI'</span>: <span class="st">'Finland'</span>,<span class="st">'GR'</span>: <span class="st">'Greece'</span>,<span class="st">'HU'</span>: <span class="st">'Hungary'</span>,<span class="st">'IL'</span>: <span class="st">'Israel'</span>,<span class="st">'KE'</span>: <span class="st">'Kenya'</span>,<span class="st">'KZ'</span>: <span class="st">'Kazakhstan'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'LB'</span>: <span class="st">'Lebanon'</span>,<span class="st">'LT'</span>: <span class="st">'Lithuania'</span>,<span class="st">'LU'</span>: <span class="st">'Luxembourg'</span>,<span class="st">'MY'</span>: <span class="st">'Malaysia'</span>,<span class="st">'NG'</span>: <span class="st">'Nigeria'</span>,<span class="st">'NO'</span>: <span class="st">'Norway'</span>,<span class="st">'PE'</span>: <span class="st">'Peru'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PH'</span>: <span class="st">'Philippines'</span>,<span class="st">'PL'</span>: <span class="st">'Poland'</span>,<span class="st">'PT'</span>: <span class="st">'Portugal'</span>,<span class="st">'RO'</span>: <span class="st">'Romania'</span>,<span class="st">'SA'</span>: <span class="st">'Saudi Arabia'</span>,<span class="st">'SE'</span>: <span class="st">'Sweden'</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SI'</span>: <span class="st">'Slovenia'</span>,<span class="st">'SG'</span>: <span class="st">'Singapore'</span>,<span class="st">'SK'</span>: <span class="st">'Slovakia'</span>,<span class="st">'UA'</span>: <span class="st">'Ukraine'</span>,<span class="st">'VN'</span>: <span class="st">'Vietnam'</span>}</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>appdf[<span class="st">"Country"</span>] <span class="op">=</span> appdf[<span class="st">"Country"</span>].<span class="bu">map</span>(country_mapping)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> appdf.loc[(appdf[<span class="st">"Peak"</span>] <span class="op">==</span> <span class="dv">1</span>)]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> appdf.drop_duplicates(subset<span class="op">=</span><span class="st">"Country"</span>, keep<span class="op">=</span><span class="st">"last"</span>) <span class="co">#did last bc first was all Doja Cat and want to see some variation</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> appdf.drop(columns<span class="op">=</span>{<span class="st">"Unnamed: 0"</span>})</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> appdf.head(<span class="dv">40</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> appdf.sort_values(by<span class="op">=</span>[<span class="st">"Country"</span>])</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>appdf <span class="op">=</span> appdf.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appdf.head)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;bound method NDFrame.head of     Chart Position                    Artist and Title  Position Duration  \
+0              198  Elton John &amp; Dua Lipa - Cold Heart                787   
+1              198  Elton John &amp; Dua Lipa - Cold Heart                787   
+2               84             Travis Scott - MELTDOWN                 76   
+3              126                Ed Sheeran - Perfect               1982   
+4              198  Elton John &amp; Dua Lipa - Cold Heart                787   
+5              126                Ed Sheeran - Perfect               1982   
+6                7         Taylor Swift - Cruel Summer                245   
+7                7         Taylor Swift - Cruel Summer                245   
+8               42            Harry Styles - As It Was                559   
+9              126                Ed Sheeran - Perfect               1982   
+10             198  Elton John &amp; Dua Lipa - Cold Heart                787   
+11              84             Travis Scott - MELTDOWN                 76   
+12              49        The Weeknd - Blinding Lights               1354   
+13             126                Ed Sheeran - Perfect               1982   
+14              32               Miley Cyrus - Flowers                272   
+15              84             Travis Scott - MELTDOWN                 76   
+16              18          Dua Lipa - Dance The Night                139   
+17             126                Ed Sheeran - Perfect               1982   
+18              32               Miley Cyrus - Flowers                272   
+19             126                Ed Sheeran - Perfect               1982   
+20             126                Ed Sheeran - Perfect               1982   
+21             198  Elton John &amp; Dua Lipa - Cold Heart                787   
+22               6            Olivia Rodrigo - vampire                104   
+23              84             Travis Scott - MELTDOWN                 76   
+24               1       Doja Cat - Paint The Town Red                 68   
+25               1       Doja Cat - Paint The Town Red                 68   
+26              84             Travis Scott - MELTDOWN                 76   
+27              42            Harry Styles - As It Was                559   
+28             198  Elton John &amp; Dua Lipa - Cold Heart                787   
+29             198  Elton John &amp; Dua Lipa - Cold Heart                787   
+30             198  Elton John &amp; Dua Lipa - Cold Heart                787   
+31              70                     SZA - Kill Bill                307   
+32              42            Harry Styles - As It Was                559   
+33             198  Elton John &amp; Dua Lipa - Cold Heart                787   
+34               7         Taylor Swift - Cruel Summer                245   
+35             126                Ed Sheeran - Perfect               1982   
+36               1       Doja Cat - Paint The Town Red                 68   
+37             126                Ed Sheeran - Perfect               1982   
+38             126                Ed Sheeran - Perfect               1982   
+39              84             Travis Scott - MELTDOWN                 76   
+
+    Peak  (x?)  Points               Country  Country Rank  
+0      1    41    1056             Argentina          93.0  
+1      1    41    1056             Australia          43.0  
+2      1     3    1860               Austria         153.0  
+3      1     2    1446               Belgium         126.0  
+4      1    41    1056                Brazil          68.0  
+5      1     2    1446                Canada         150.0  
+6      1    13   10731                 Chile         123.0  
+7      1    13   10731                 China          71.0  
+8      1   177    4017              Colombia         186.0  
+9      1     2    1446        Czech Republic          96.0  
+10     1    41    1056               Denmark         124.0  
+11     1     3    1860                 Egypt          47.0  
+12     1   114    3624               Estonia          29.0  
+13     1     2    1446               Finland         158.0  
+14     1   168    5145                France         124.0  
+15     1     3    1860               Germany         170.0  
+16     1    19    7035                Greece          92.0  
+17     1     2    1446             Hong Kong         182.0  
+18     1   168    5145               Hungary          74.0  
+19     1     2    1446                 India         103.0  
+20     1     2    1446             Indonesia         138.0  
+21     1    41    1056               Ireland         151.0  
+22     1    22   10868                Israel          21.0  
+23     1     3    1860                 Italy         144.0  
+24     1    45   16920                 Japan         165.0  
+25     1    45   16920            Kazakhstan           2.0  
+26     1     3    1860                 Kenya          59.0  
+27     1   177    4017                Mexico         171.0  
+28     1    41    1056           Netherlands          99.0  
+29     1    41    1056           New Zealand          49.0  
+30     1    41    1056          South Africa         177.0  
+31     1     3    2487           South Korea          98.0  
+32     1   177    4017                 Spain         164.0  
+33     1    41    1056           Switzerland         122.0  
+34     1    13   10731                Taiwan          20.0  
+35     1     2    1446              Thailand         131.0  
+36     1    45   16920                Turkey          21.0  
+37     1     2    1446  United Arab Emirates          91.0  
+38     1     2    1446        United Kingdom         136.0  
+39     1     3    1860         United States          52.0  &gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="75">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate then vectorize countries</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(appdf.shape)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>happymusicdf <span class="op">=</span> pd.concat([happy20, appdf],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happymusicdf.shape)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happymusicdf.keys())</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happymusicdf.head)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(40, 8)
+(40, 11)
+Index(['CountryHappy', 'Score', 'GDP', 'Chart Position', 'Artist and Title',
+       'Position Duration', 'Peak', '(x?)', 'Points', 'Country',
+       'Country Rank'],
+      dtype='object')
+&lt;bound method NDFrame.head of                     CountryHappy   Score         GDP  Chart Position  \
+0                    Afghanistan  1.8590       363.7             198   
+1                      Australia  7.0946   64,491.40             198   
+2                        Austria  7.0973   52,131.40              84   
+3                     Bangladesh  4.2821    2,688.30             126   
+4                        Belgium  6.8591   49,582.80             198   
+5                       Botswana  3.4353    7,737.70             126   
+6                         Canada  6.9607   54,966.50               7   
+7                        Comoros  3.5452    1,484.90               7   
+8                        Czechia  6.8452   27,638.40              42   
+9   Democratic Republic of Congo  3.2072       586.5             126   
+10                       Denmark  7.5864   66,983.10             198   
+11                         Egypt  4.1705    4,295.40              84   
+12                      Ethiopia  4.0906    1,027.60              49   
+13                       Finland  7.8042   50,536.60             126   
+14                        Gambia  4.2794         840              32   
+15                       Germany  6.8918   48,432.50              84   
+16                       Iceland  7.5296   72,903.00              18   
+17                         India  4.0358    2,388.60             126   
+18                       Ireland  6.9108  104,038.90              32   
+19                        Israel  7.4729   54,659.80             126   
+20                        Jordan  4.1198    4,204.50             126   
+21                       Lebanon  2.3922    4,136.10             198   
+22                       Liberia  4.0423       754.5               6   
+23                     Lithuania  6.7630   24,826.80              84   
+24                    Luxembourg  7.2279  126,426.10               1   
+25                    Madagascar  4.0191         505               1   
+26                        Malawi  3.4952       645.2              84   
+27                          Mali  4.1978       833.3              42   
+28                   Netherlands  7.4030   55,985.40             198   
+29                   New Zealand  7.1229   48,249.30             198   
+30                        Norway  7.3155  106,148.80             198   
+31                  Sierra Leone  3.1376       461.4              70   
+32                        Sweden  7.3952   55,873.20              42   
+33                   Switzerland  7.2401   92,101.50             198   
+34                      Tanzania  3.6938    1,192.40               7   
+35                          Togo  4.1374       918.4             126   
+36                United Kingdom  6.7956   45,850.40               1   
+37                 United States  6.8937   76,398.60             126   
+38                        Zambia  3.9822    1,487.90             126   
+39                      Zimbabwe  3.2035    1,267.00              84   
+
+                      Artist and Title  Position Duration  Peak  (x?)  Points  \
+0   Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+1   Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+2              Travis Scott - MELTDOWN                 76     1     3    1860   
+3                 Ed Sheeran - Perfect               1982     1     2    1446   
+4   Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+5                 Ed Sheeran - Perfect               1982     1     2    1446   
+6          Taylor Swift - Cruel Summer                245     1    13   10731   
+7          Taylor Swift - Cruel Summer                245     1    13   10731   
+8             Harry Styles - As It Was                559     1   177    4017   
+9                 Ed Sheeran - Perfect               1982     1     2    1446   
+10  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+11             Travis Scott - MELTDOWN                 76     1     3    1860   
+12        The Weeknd - Blinding Lights               1354     1   114    3624   
+13                Ed Sheeran - Perfect               1982     1     2    1446   
+14               Miley Cyrus - Flowers                272     1   168    5145   
+15             Travis Scott - MELTDOWN                 76     1     3    1860   
+16          Dua Lipa - Dance The Night                139     1    19    7035   
+17                Ed Sheeran - Perfect               1982     1     2    1446   
+18               Miley Cyrus - Flowers                272     1   168    5145   
+19                Ed Sheeran - Perfect               1982     1     2    1446   
+20                Ed Sheeran - Perfect               1982     1     2    1446   
+21  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+22            Olivia Rodrigo - vampire                104     1    22   10868   
+23             Travis Scott - MELTDOWN                 76     1     3    1860   
+24       Doja Cat - Paint The Town Red                 68     1    45   16920   
+25       Doja Cat - Paint The Town Red                 68     1    45   16920   
+26             Travis Scott - MELTDOWN                 76     1     3    1860   
+27            Harry Styles - As It Was                559     1   177    4017   
+28  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+29  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+30  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+31                     SZA - Kill Bill                307     1     3    2487   
+32            Harry Styles - As It Was                559     1   177    4017   
+33  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+34         Taylor Swift - Cruel Summer                245     1    13   10731   
+35                Ed Sheeran - Perfect               1982     1     2    1446   
+36       Doja Cat - Paint The Town Red                 68     1    45   16920   
+37                Ed Sheeran - Perfect               1982     1     2    1446   
+38                Ed Sheeran - Perfect               1982     1     2    1446   
+39             Travis Scott - MELTDOWN                 76     1     3    1860   
+
+                 Country  Country Rank  
+0              Argentina          93.0  
+1              Australia          43.0  
+2                Austria         153.0  
+3                Belgium         126.0  
+4                 Brazil          68.0  
+5                 Canada         150.0  
+6                  Chile         123.0  
+7                  China          71.0  
+8               Colombia         186.0  
+9         Czech Republic          96.0  
+10               Denmark         124.0  
+11                 Egypt          47.0  
+12               Estonia          29.0  
+13               Finland         158.0  
+14                France         124.0  
+15               Germany         170.0  
+16                Greece          92.0  
+17             Hong Kong         182.0  
+18               Hungary          74.0  
+19                 India         103.0  
+20             Indonesia         138.0  
+21               Ireland         151.0  
+22                Israel          21.0  
+23                 Italy         144.0  
+24                 Japan         165.0  
+25            Kazakhstan           2.0  
+26                 Kenya          59.0  
+27                Mexico         171.0  
+28           Netherlands          99.0  
+29           New Zealand          49.0  
+30          South Africa         177.0  
+31           South Korea          98.0  
+32                 Spain         164.0  
+33           Switzerland         122.0  
+34                Taiwan          20.0  
+35              Thailand         131.0  
+36                Turkey          21.0  
+37  United Arab Emirates          91.0  
+38        United Kingdom         136.0  
+39         United States          52.0  &gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="76">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>happysongsdf <span class="op">=</span> happymusicdf[happymusicdf[<span class="st">"CountryHappy"</span>] <span class="op">==</span> happymusicdf[<span class="st">"Country"</span>]]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>happysongsdf[<span class="st">"GDP"</span>] <span class="op">=</span> pd.to_numeric(happysongsdf[<span class="st">"GDP"</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>), errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happysongsdf.shape)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happysongsdf.head)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#happysongsdf.to_csv("../websitedata/happyCountryMatch.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(9, 11)
+&lt;bound method NDFrame.head of    CountryHappy   Score      GDP  Chart Position  \
+1     Australia  7.0946  64491.4             198   
+2       Austria  7.0973  52131.4              84   
+10      Denmark  7.5864  66983.1             198   
+11        Egypt  4.1705   4295.4              84   
+13      Finland  7.8042  50536.6             126   
+15      Germany  6.8918  48432.5              84   
+28  Netherlands  7.4030  55985.4             198   
+29  New Zealand  7.1229  48249.3             198   
+33  Switzerland  7.2401  92101.5             198   
+
+                      Artist and Title  Position Duration  Peak  (x?)  Points  \
+1   Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+2              Travis Scott - MELTDOWN                 76     1     3    1860   
+10  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+11             Travis Scott - MELTDOWN                 76     1     3    1860   
+13                Ed Sheeran - Perfect               1982     1     2    1446   
+15             Travis Scott - MELTDOWN                 76     1     3    1860   
+28  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+29  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+33  Elton John &amp; Dua Lipa - Cold Heart                787     1    41    1056   
+
+        Country  Country Rank  
+1     Australia          43.0  
+2       Austria         153.0  
+10      Denmark         124.0  
+11        Egypt          47.0  
+13      Finland         158.0  
+15      Germany         170.0  
+28  Netherlands          99.0  
+29  New Zealand          49.0  
+33  Switzerland         122.0  &gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\Amand\AppData\Local\Temp\ipykernel_19352\3590638393.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  happysongsdf["GDP"] = pd.to_numeric(happysongsdf["GDP"].str.replace(',', ''), errors='coerce')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="77">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>happysongs <span class="op">=</span> happysongsdf.drop(columns<span class="op">=</span>{<span class="st">"Country"</span>, <span class="st">"CountryHappy"</span>, <span class="st">"Score"</span>, <span class="st">"Artist and Title"</span>})</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#happysongsdf = happysongsdf.rename(columns={"CountryHappy": "Country"})</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(happysongs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        GDP  Chart Position  Position Duration  Peak  (x?)  Points  \
+1   64491.4             198                787     1    41    1056   
+2   52131.4              84                 76     1     3    1860   
+10  66983.1             198                787     1    41    1056   
+11   4295.4              84                 76     1     3    1860   
+13  50536.6             126               1982     1     2    1446   
+15  48432.5              84                 76     1     3    1860   
+28  55985.4             198                787     1    41    1056   
+29  48249.3             198                787     1    41    1056   
+33  92101.5             198                787     1    41    1056   
+
+    Country Rank  
+1           43.0  
+2          153.0  
+10         124.0  
+11          47.0  
+13         158.0  
+15         170.0  
+28          99.0  
+29          49.0  
+33         122.0  </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="78">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SCORE AND CHART POSITION</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> happysongs</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> happysongsdf[<span class="st">"Score"</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.to_numpy()</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.shape)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(9, 7)
+(9,)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="79">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>test_ratio<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span>test_ratio, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>y_train<span class="op">=</span>y_train.flatten()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>y_test<span class="op">=</span>y_test.flatten()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"x_train.shape        :"</span>,x_train.shape)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"y_train.shape        :"</span>,y_train.shape)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"X_test.shape     :"</span>,x_test.shape)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"y_test.shape     :"</span>,y_test.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>x_train.shape        : (7, 7)
+y_train.shape        : (7,)
+X_test.shape     : (2, 7)
+y_test.shape     : (2,)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="80">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_percentage_error</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># HYPER PARAMETER SEARCH FOR OPTIMAL NUMBER OF NEIGHBORS </span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>hyper_param<span class="op">=</span>[]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>train_error<span class="op">=</span>[]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>test_error<span class="op">=</span>[]</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># LOOP OVER HYPER-PARAM</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">40</span>):</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># INITIALIZE MODEL </span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span>i)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># TRAIN MODEL </span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    model.fit(x_train,y_train)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># OUTPUT PREDICTIONS FOR TRAINING AND </span><span class="al">TEST</span><span class="co"> SET </span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    yp_train <span class="op">=</span> model.predict(x_train)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    yp_test <span class="op">=</span> model.predict(x_test)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shift=1+np.min(y_train) #add shift to remove division by zero </span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    err1<span class="op">=</span>mean_absolute_error(y_train, yp_train) </span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    err2<span class="op">=</span>mean_absolute_error(y_test, yp_test) </span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># err1=100.0*np.mean(np.absolute((yp_train-y_train)/y_train))</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># err2=100.0*np.mean(np.absolute((yp_test-y_test)/y_test))</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    hyper_param.append(i)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    train_error.append(err1)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    test_error.append(err2)</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i<span class="op">==</span><span class="dv">1</span> <span class="kw">or</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>):</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"hyperparam ="</span>,i)</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">" train error:"</span>,err1)</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">" test error:"</span> ,err2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>hyperparam = 1
+ train error: 0.19910476190476142
+ test error: 0.23175000000000034
+hyperparam = 10
+ train error: 0.0
+ test error: 0.28869999999999996
+hyperparam = 20
+ train error: 0.0
+ test error: 0.18730000000000002
+hyperparam = 30
+ train error: 0.0
+ test error: 0.18730000000000002</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="84">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.plot(hyper_param,train_error ,linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.plot(hyper_param,test_error ,linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Depth of tree (max depth)"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Training (black) and test (blue) MAE (error)"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hyper_param[i],train_error[i],test_error[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>2 0.10067999999999991 0.23175000000000034</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="regression_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="81">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TRAINING SHAPES:"</span>,x_train.shape,y_train.shape)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TEST SHAPES:"</span>,x_test.shape,y_test.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>TRAINING SHAPES: (6, 7) (6,)
+TEST SHAPES: (3, 7) (3,)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="85">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INITIALIZE MODEL </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>model.fit(x_train,y_train)                     <span class="co"># TRAIN MODEL </span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># OUTPUT PREDICTIONS FOR TRAINING AND </span><span class="al">TEST</span><span class="co"> SET </span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>yp_train <span class="op">=</span> model.predict(x_train)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>yp_test <span class="op">=</span> model.predict(x_test)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>err1<span class="op">=</span>mean_absolute_error(y_train, yp_train) </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>err2<span class="op">=</span>mean_absolute_error(y_test, yp_test) </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" train error:"</span>,err1)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" test error:"</span> ,err2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> train error: 0.21123999999999996
+ test error: 0.217646666666667</code></pre>
+</div>
+</div>
+<p>My dataset was too small for a supervised learning project to yield an accurate analysis. However, my methodology was to run a regression model, where I combine the datasets for self- reported life satisfaction and apple music rankings and use the life satisfaction as the target variable. The decision tree produced 2 leaves, one with a value of 4.17 and another with a value of 7.287.</p>
+<p>Below, I produced a decision tree with some information on the success of the algorithm and a linear regression visualization. As the closer the predicted y and true y is to the line, this visualization shows the fit was not perfect, but luckily the data did not suffer from overfitting.</p>
+<div class="cell" data-execution_count="87">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_tree(model):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">20</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    _ <span class="op">=</span> tree.plot_tree(model, </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                    filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>plot_tree(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="regression_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="88">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LINEAR REGRESSION </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression().fit(X, y)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># OUTPUT PREDICTIONS FOR TRAINING AND </span><span class="al">TEST</span><span class="co"> SET </span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>yp_train <span class="op">=</span> model.predict(x_train)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>yp_test <span class="op">=</span> model.predict(x_test)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>plt.plot(y_train,yp_train ,<span class="st">"o"</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.plot(y_test,yp_test ,<span class="st">"o"</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>plt.plot(y_train,y_train,<span class="st">"-"</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"y_data"</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"y_pred (blue=test)(black=Train)"</span>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>err1<span class="op">=</span><span class="fl">100.0</span><span class="op">*</span>np.mean(np.absolute((yp_train<span class="op">-</span>y_train)<span class="op">/</span>y_train))</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>err2<span class="op">=</span><span class="fl">100.0</span><span class="op">*</span>np.mean(np.absolute((yp_test<span class="op">-</span>y_test)<span class="op">/</span>y_test))</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" train error:"</span>,err1)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" test error:"</span> ,err2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> train error: 5.476143871360148
+ test error: 5.467027259259829</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="regression_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+</div>
+</div>
 
 
 

@@ -1,0 +1,54 @@
+---
+title: Conclusion
+bibliography: reference.bib
+---
+
+# CONCLUSION
+
+To conclude this project, I have a summary of the various insights throughout the series of analyses: 
+
+## Data Exploration: 
+
+### Apple Music
+
+For the Apple dataframe, the Peak had the least amount of  standard  deviation of -0.724705. Also, the variables yielded predominantly negative correlations, with the highest negative correlation being between Points and Chart Position. Meaning as the song moves up in ranking on the chart, the amount of points accumulated increases.
+
+### Spotify API
+
+The correlations were a fairly even mix of positive and negative correlation relationships. The highest positive correlation belongs to Energy and Loudness, meaning the louder the song, the more intensity captured as well. Also, acousticness and Energy appear to have the highest negative correlation.
+### Netflix
+
+Among the top television shows, the standard deviation was about 11,000 points. It can be assumed that the popularity of these shows has a wide amount of variation.
+
+### GDP vs Self- Reported Life Satisfaction
+
+Gross Domestic Product standard deviation was estimated to about 24,500 per capita, yet the report of life satisfaction has an estimated standard deviation of 1.14. Suggesting a large flexibility among life satisfaction. However, the correlation between the two variables is 0.695397.
+
+### Wikipedia API
+
+I produced word clouds to display the most used words for the top five- rated television shows. From observation, the Dahmer series is the only show that noticeably emphasizes negativity. This makes sense, as the story follows a serial killer.
+
+Naive Bayes:
+- I used the Multinomial Bayes Classifier on both my text and record datasets to discern how my self- reporting life satisfaction data is classified. Since my text and record data didn’t have many variables, the hyperparameter tuning was not as useful and the data suffered overfitting.
+
+Clustering Analysis:
+
+- My optimal parameter for the k- Means clustering and the Hierarchical Agglomerative clustering was 2 clusters, whereas it was 3.5 for DBSCAN. I concluded DBSCAN was the favorable method. In the final DBSCAN, the lower the Energy and Danceability, the lower the Valence. However, the Valence was highest at the middle point of Danceability and the higher end of Energy.
+
+Dimensionality Reduction:
+
+- The Principal Component Analysis yielded more variance as the songs reduced in(numbers increase for rankings) Country Rank and Chart Position.
+For t- SNE, the clusters had clearer separation as the perplexity reached 15. Suggesting the Apple Music dataset contains pretty distinct clusters in general.
+
+
+Decision Trees:
+
+- The decision tree produced 2 leaves, one with a value of 4.17 and another with a value of 7.287. My linear regression plot visualization shows the fit was not perfect, and fortunately the data did not suffer from overfitting.
+
+
+The phenomena of streaming service preferences being linked to psychological standing holds several implications for readers. One being businesses need to progress in their depth of understanding the multiple facets of consumerism. With more and more platforms competing for customers– such as Spotify vs. Apple Music vs. Pandora and Netflix vs. Hulu vs. Peacock– persistent efforts to create gradually more adaptable recommendation systems is worth exploring.
+
+
+Another implication being the benefits of consumers becoming more educated on how the entertainment they consume may affect them. As seen in the referenced works, there are a diverse array of effects on various moods to expect from different genres of media and their corresponding sentiments. It may hold significance for many consumers to educate themselves on the directions to take in the entertainment realm to enhance their well- being by encouraging an environment of consumption more conducive to their mental state.
+
+

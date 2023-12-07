@@ -35,21 +35,17 @@ website:
           - dataexploration.ipynb
       - section: "Naive Bayes"
         contents: 
-          - naivebayes.qmd
+          - naivebayes.ipynb
       - section: "Clustering"
         contents:
-          - clustering.qmd
+          - clustering.ipynb
       - section: "Dimensionality Reduction"
         contents:
-          - dimensionalityreduction.qmd
+          - dimensionalityreduction.ipynb
       - section: "Decision Trees"
         contents:
           - decisiontrees.ipynb
-          - Classification.qmd
-          - regression.qmd
-      - section: "Asosciation Rule Mining"
-        contents:
-          - arm.qmd
+          - regression.ipynb
       - section: "Conclusions"
         contents:
           - conclusion.qmd
