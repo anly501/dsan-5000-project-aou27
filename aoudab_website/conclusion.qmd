@@ -3,8 +3,6 @@ title: Conclusion
 bibliography: reference.bib
 ---
 
-# CONCLUSION
-
 To conclude this project, I have a summary of the various insights throughout the series of analyses: 
 
 ## Data Exploration: 

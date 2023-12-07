@@ -355,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">conclusion.html</span></a>
+ <span class="menu-text">Conclusion</span></a>
   </div>
 </li>
       </ul>
@@ -398,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For dimensionality reduction, I aim to look at the most important features in my Apple Music dataset. I will be using Principal Component Analysis and T- distributed Stochastic Neighbor Embedding to achieve this. The libraries I will be using include request, json, re, pandas, numpy, seaborn, and matplotlib,pyplot. For the techniques specifically, I will be using decomposition from Sci- Kit Learn for the Principal Component Analysis and manifold from Sci- Kit Learn for the T- distributed Stochastic Neighbor Embedding.</p>
 <section id="pca" class="level3">
 <h3 class="anchored" data-anchor-id="pca">PCA</h3>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -413,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>newAppledf <span class="op">=</span> pd.read_csv(<span class="st">"../websitedata/newApple_py.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> appledf[<span class="st">"Peak"</span>]</span>
@@ -439,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [836 rows x 5 columns]&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA</span></span>
@@ -468,7 +468,7 @@ Points            -4.861844e-04
 Country Rank       9.751437e-06  </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># APPLYING PCA TO WHOLE DATASET</span></span>
@@ -502,7 +502,7 @@ Country Rank       9.751437e-06  </code></pre>
 <p><img src="dimensionalityreduction_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#COMPUTE PRINCIPAL COMPONENTS use min instead of mle due to it being a small dataset</span></span>
@@ -514,7 +514,7 @@ Country Rank       9.751437e-06  </code></pre>
 <pre><code>5</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -552,7 +552,7 @@ Country Rank       9.751437e-06  </code></pre>
 </section>
 <section id="t-sne" class="level3">
 <h3 class="anchored" data-anchor-id="t-sne">t-SNE</h3>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -575,21 +575,21 @@ Country Rank       9.751437e-06  </code></pre>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>RESULTS
 shape :  (836, 3)
 First few points : 
- [[-4.0801806  1.8393875 -6.8396597]
- [22.922949  -4.0286193  5.5301023]]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.</code></pre>
+ [[ 6.175029   8.508618  -7.4983315]
+ [ 8.387154   3.5311518 13.786998 ]]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="dimensionalityreduction_files/figure-html/cell-8-output-3.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DIFFERENT PERPLEXITY</span></span>
@@ -617,14 +617,14 @@ First few points :
 <pre><code>RESULTS
 shape :  (836, 3)
 First few points : 
- [[-8.884602  -2.188295  13.828147 ]
- [ 7.1846733 -1.5688902  5.18785  ]]</code></pre>
+ [[ 3.7008498 -4.7721825 14.357299 ]
+ [14.687176  -8.408725   6.7310157]]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="dimensionalityreduction_files/figure-html/cell-9-output-3.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DIFFERENT PERPLEXITY</span></span>
@@ -652,14 +652,11 @@ First few points :
 <pre><code>RESULTS
 shape :  (836, 3)
 First few points : 
- [[ 3.9995983  0.7876073 11.970057 ]
- [21.519993  -2.8035846 -4.093571 ]]</code></pre>
+ [[-10.657185   -3.6224663  -1.5625678]
+ [  1.7244056 -20.046017   -4.3512034]]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="dimensionalityreduction_files/figure-html/cell-10-output-3.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>: </code></pre>
 </div>
 </div>
 <p>When observing the Principal Component Analysis, it seems there is more variance as the songs have lower (numbers increase for rankings) Country Rank and Chart Position. For t- SNE, it appears the clusters became noticeably distinct as the perplexity reached 15. This might indicate the Apple Music dataset contains pretty distinct clusters in general.</p>
