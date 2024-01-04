@@ -1,8 +1,11 @@
 ---
-title: "Amanda Ofure Udabor's Website
-        GUID: au195"
+title: "DSAN 5000 Semester Project"
 listing:
   contents: posts
   sort: "date desc"
   type: default
 ---
+
+Name: Amanda Ofure Udabor
+
+GUID: au195
